@@ -21,6 +21,14 @@ html, body {
 	font-family: Roboto,Helvetica,Verdana,Arial,sans-serif;
 }
 
+.red {
+	color: red;
+}
+
+.orange {
+	color: #FAB767;
+}
+
 input, button {
 	border-radius: 0px !important;
 	box-shadow: none !important;
@@ -39,8 +47,13 @@ input, button {
 	text-align: center !important;
 }
 
+
 .main-sidebar {
     background: #FFFFFF;
+}
+
+.page {
+	background: #EEEEEE;
 }
 
 .main-sidebar .navbar, .main-sidebar .navbar-default {
@@ -48,6 +61,7 @@ input, button {
     border-radius: 0 !important;
     margin-top: 0px !important;
 	border: 0px !important;
+	margin-bottom: 0px !important;
 }
 
 .btn-green {
@@ -90,6 +104,7 @@ input, button {
 	box-shadow: none !important;
 	background: #00B9F2 !important;
 	border: 0px !important;
+	margin-top: 20px;
 }
 
 .navbar-search .navbar-form {
@@ -102,6 +117,42 @@ input, button {
 	background: #fff !important;
 	color: #555555 !important;
 	border: 0px !important;
+}
+
+.page-container .page-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.page-container .list-job-posted {
+	border-bottom: solid 1px #eee;
+	background: #EAF8FC;
+}
+
+.page-container .post-logo {
+	background: #fff;
+	border-right: solid 1px #eee;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.page-container .post-logo .thumbnail {
+	margin-bottom: 0px;
+	border: 0px;
+	box-shadow: none;
+}
+
+.page-container .post-content {
+	background: #EAF8FC;
+	padding-top: 12px;
+	padding-bottom: 13px;
+	padding-left: 20px;
+}
+
+.page-container .post-content a, .page-container .post-content a:hover {
+	color: red;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .navbar-filter {
@@ -127,4 +178,18 @@ input, button {
 .form-login {
 	margin-left: 10%;
 	margin-right: 10%;
+}
+
+/*--FOOTER--*/
+.footer {
+	background: #DBDBDB !important;
+	height: 400px;
+}
+
+.footer-link {
+	height: 80%;
+}
+
+.footer-info {
+	height: 20%;
 }
