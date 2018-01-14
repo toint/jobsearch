@@ -34,8 +34,8 @@ function searchjob_setup() {
 		'audio',
 	) );
 	add_theme_support( 'custom-logo', array(
-		'width'       => 250,
-		'height'      => 250,
+		'width'       => 60,
+		'height'      => 30,
 		'flex-width'  => true,
 	) );
 	add_theme_support( 'customize-selective-refresh-widgets' );
@@ -125,6 +125,7 @@ function searchjob_scripts()
 	wp_enqueue_style( 'datatables', get_theme_file_uri( '/assets/css/dataTables.bootstrap.css' ), array(), '1.10.16' );
 	wp_enqueue_style( 'bootstrap-datepicker3', get_theme_file_uri( '/assets/css/bootstrap-datepicker3.css' ), array(), '1.6.4' );
 	wp_enqueue_style( 'vector-map', get_theme_file_uri( '/assets/css/jquery-jvectormap-2.0.3.css' ), array(), '2.0.3' );
+	wp_enqueue_style( 'pace-style', get_theme_file_uri( '/assets/css/pace.css' ), array(), '1.0.2' );
 
 	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/assets/js/bootstrap.min.js' ), array(), '4.0', true );
 	wp_enqueue_script( 'jquery-ui', get_theme_file_uri( '/assets/js/jquery-ui.min.js' ), array(), '1.12.1', true );
@@ -134,6 +135,7 @@ function searchjob_scripts()
 	wp_enqueue_script( 'vector-map', get_theme_file_uri( '/assets/js/jquery-jvectormap-2.0.3.min.js' ), array(), '2.0.3', true );
 	wp_enqueue_script( 'vector-map-france', get_theme_file_uri( '/assets/js/maps/jquery-jvectormap-fr_regions-mill.js' ), array(), '2.0.3', true );
 	wp_enqueue_script( 'vector-map-vietnam', get_theme_file_uri( '/assets/js/maps/vietnam_map.js' ), array(), '2.0.3', true );
+	wp_enqueue_script( 'pace-script', get_theme_file_uri( '/assets/js/pace.min.js' ), array(), '1.0.2', true );
 }
 add_action( 'init', 'searchjob_scripts' );
 

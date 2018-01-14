@@ -15,8 +15,7 @@
 get_header(); ?>
 
     <?php echo get_template_part('template-parts/content', 'search'); ?>
-    
-    <?php echo get_template_part('template-parts/content', 'list-job'); ?>
+    <h1>Page</h1>
     
 
 <?php get_footer();

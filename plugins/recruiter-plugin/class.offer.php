@@ -4,6 +4,8 @@ class Offer {
     
     function offer_update($data) {
         global $wpdb;
+        wp_update_post($data['post']);
+        
         $status = $wpdb->update($wpdb->prefix . 'new_offer', $data['offer'], $data['where']);
         $offer_id = $data['where']['id'];
         if ($status == false) { 
@@ -21,6 +23,8 @@ class Offer {
         $meta_data = $data['meta_data'];
         $this->insert_new_offer_meta($wpdb, $offer_id, $meta_data);
         
+        
+        
         return TRUE;
     }
     
@@ -28,7 +32,12 @@ class Offer {
     
     function offer_save($data) {
         global $wpdb;
-        $new_offer = $wpdb->insert($wpdb->prefix . 'new_offer', $data['offer']);
+        $post_id = wp_insert_post($data['post']);
+        
+        $offer_data = $data['offer'];
+        $offer_data['post_id'] = $post_id;
+        
+        $new_offer = $wpdb->insert($wpdb->prefix . 'new_offer', $offer_data);
         $offer_id = $wpdb->insert_id;
         
         if ($new_offer == FALSE) {
@@ -36,8 +45,7 @@ class Offer {
             return '';
         }
         
-        $offer = $data['offer'];
-        $job_type = $offer['job_type'];
+        $job_type = $offer_data['job_type'];
         $this->insert_offer_meta($wpdb, 'JOB_TYPE', $job_type);
         
         $meta_data = $data['meta_data'];
@@ -128,9 +136,11 @@ class Offer {
         global $wpdb;
         $user = wp_get_current_user();
         
-        $sql = "select id, title, place_code, place_text, level, posted_date, ";
+        $sql = "select a.id, a.post_id, b.post_title title, a.place_code, a.place_text, a.level, a.posted_date, ";
         $sql .= "case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name ";
-        $sql .= " from " . $wpdb->prefix . "new_offer where user_id = " . $user->ID;
+        $sql .= " from " . $wpdb->prefix . "new_offer a ";
+        $sql .= " join " . $wpdb->prefix . "posts b on a.post_id = b.id ";
+        $sql .= " where a.user_id = " . $user->ID;
         $results = $wpdb->get_results($sql);
         
         return $results;
@@ -140,7 +150,9 @@ class Offer {
         global $wpdb;
         $user = wp_get_current_user();
         
-        $sql = "select * from " . $wpdb->prefix . "new_offer where user_id = " . $user->ID . " and id = " . $id;
+        $sql = "select a.*, b.post_title title from " . $wpdb->prefix . "new_offer a ";
+        $sql .= " join " . $wpdb->prefix . "posts b on a.post_id = b.id ";
+        $sql .= " where a.user_id = " . $user->ID . " and a.id = " . $id;
         $results = $wpdb->get_results($sql);
         if (!empty($results)) return $results[0];
         return NULL;

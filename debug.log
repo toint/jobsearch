@@ -711,3 +711,102 @@
 [11-Jan-2018 10:18:06 UTC] PHP Fatal error:  Call to a member function num_rows() on array in C:\xampp\htdocs\jobs\wp-content\themes\searchjob\inc\job-functions.php on line 20
 [11-Jan-2018 10:20:06 UTC] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\jobs\wp-content\themes\searchjob\inc\job-functions.php on line 20
 [11-Jan-2018 10:20:06 UTC] PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\jobs\wp-content\themes\searchjob\inc\job-functions.php on line 24
+[12-Jan-2018 16:41:03 UTC] PHP Notice:  wpdb::prepare được gọi là <strong>không chính xác</strong>. Không hỗ trợ kiểu giá trị (array). Vui lòng xem <a href="https://codex.wordpress.org/Debugging_in_WordPress">Hướng dẫn Debug trong WordPress</a> để biết thêm thông tin. (Thông điệp này đã được thêm vào trong phiên bản 4.8.2.) in C:\xampp\htdocs\jobs\wp-includes\functions.php on line 4146
+[12-Jan-2018 16:41:03 UTC] PHP Stack trace:
+[12-Jan-2018 16:41:03 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-admin\admin.php:0
+[12-Jan-2018 16:41:03 UTC] PHP   2. do_action() C:\xampp\htdocs\jobs\wp-admin\admin.php:224
+[12-Jan-2018 16:41:03 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:453
+[12-Jan-2018 16:41:03 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[12-Jan-2018 16:41:03 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:41:03 UTC] PHP   6. new_offer_page() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:41:03 UTC] PHP   7. Offer->offer_save() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\new-offer-page.php:198
+[12-Jan-2018 16:41:03 UTC] PHP   8. wpdb->insert() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\class.offer.php:38
+[12-Jan-2018 16:41:03 UTC] PHP   9. wpdb->_insert_replace_helper() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:2022
+[12-Jan-2018 16:41:03 UTC] PHP  10. wpdb->prepare() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:2100
+[12-Jan-2018 16:41:03 UTC] PHP  11. _doing_it_wrong() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:1253
+[12-Jan-2018 16:41:03 UTC] PHP  12. trigger_error() C:\xampp\htdocs\jobs\wp-includes\functions.php:4146
+[12-Jan-2018 16:41:03 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 2 to be string, array given in C:\xampp\htdocs\jobs\wp-includes\wp-db.php on line 1109
+[12-Jan-2018 16:41:03 UTC] PHP Stack trace:
+[12-Jan-2018 16:41:03 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-admin\admin.php:0
+[12-Jan-2018 16:41:03 UTC] PHP   2. do_action() C:\xampp\htdocs\jobs\wp-admin\admin.php:224
+[12-Jan-2018 16:41:03 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:453
+[12-Jan-2018 16:41:03 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[12-Jan-2018 16:41:03 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:41:03 UTC] PHP   6. new_offer_page() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:41:03 UTC] PHP   7. Offer->offer_save() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\new-offer-page.php:198
+[12-Jan-2018 16:41:03 UTC] PHP   8. wpdb->insert() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\class.offer.php:38
+[12-Jan-2018 16:41:03 UTC] PHP   9. wpdb->_insert_replace_helper() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:2022
+[12-Jan-2018 16:41:03 UTC] PHP  10. wpdb->prepare() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:2100
+[12-Jan-2018 16:41:03 UTC] PHP  11. array_walk() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:1309
+[12-Jan-2018 16:41:03 UTC] PHP  12. wpdb->escape_by_ref() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:1309
+[12-Jan-2018 16:41:03 UTC] PHP  13. wpdb->_real_escape() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:1193
+[12-Jan-2018 16:41:03 UTC] PHP  14. mysqli_real_escape_string() C:\xampp\htdocs\jobs\wp-includes\wp-db.php:1109
+[12-Jan-2018 16:41:03 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column '0' in 'field list' với truy vấn INSERT INTO `wp_new_offer` (`place_code`, `place_text`, `job_type`, `occupation`, `contract_duration`, `hours_per_week`, `level`, `salary`, `negociation`, `version`, `user_id`, `status`, `posted_date`, `updated_date`, `0`) VALUES ('24', 'Hà Nội', 'IT System Administrator', 'Accounter', '6 Month', '40h', 'Director', '100', '0', '1.0', 21, '1', '2018-01-25', '2018-01-12 04:01:02', '') yêu cầu bởi do_action('all-offers_page_offer_page'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, new_offer_page, Offer->offer_save
+[12-Jan-2018 16:44:19 UTC] PHP Warning:  array_filter() expects parameter 1 to be array, integer given in C:\xampp\htdocs\jobs\wp-includes\post.php on line 3148
+[12-Jan-2018 16:44:19 UTC] PHP Stack trace:
+[12-Jan-2018 16:44:19 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-admin\admin.php:0
+[12-Jan-2018 16:44:19 UTC] PHP   2. do_action() C:\xampp\htdocs\jobs\wp-admin\admin.php:224
+[12-Jan-2018 16:44:19 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:453
+[12-Jan-2018 16:44:19 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[12-Jan-2018 16:44:19 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:44:19 UTC] PHP   6. new_offer_page() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:44:19 UTC] PHP   7. Offer->offer_save() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\new-offer-page.php:199
+[12-Jan-2018 16:44:19 UTC] PHP   8. wp_insert_post() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\class.offer.php:33
+[12-Jan-2018 16:44:19 UTC] PHP   9. array_filter() C:\xampp\htdocs\jobs\wp-includes\post.php:3148
+[12-Jan-2018 16:50:31 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'title' in 'field list' với truy vấn select id, title, place_code, place_text, level, posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer where user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 16:59:54 UTC] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, boolean given in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\recruiter.php on line 52
+[12-Jan-2018 16:59:54 UTC] PHP Stack trace:
+[12-Jan-2018 16:59:54 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-admin\admin.php:0
+[12-Jan-2018 16:59:54 UTC] PHP   2. do_action() C:\xampp\htdocs\jobs\wp-admin\admin.php:224
+[12-Jan-2018 16:59:54 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:453
+[12-Jan-2018 16:59:54 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[12-Jan-2018 16:59:54 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:59:54 UTC] PHP   6. new_offer_page() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 16:59:54 UTC] PHP   7. format_date() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\new-offer-page.php:166
+[12-Jan-2018 16:59:54 UTC] PHP   8. date_format() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\recruiter.php:52
+[12-Jan-2018 17:01:29 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'jobs.wp_post' doesn't exist với truy vấn select a.id, b.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  join wp_post b on a.post_id = b.id  where user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:03:02 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Table 'jobs.wp_post' doesn't exist với truy vấn select a.id, b.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  join wp_post b on a.post_id = b.id  where user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:03:35 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'b.post_id' in 'field list' với truy vấn select a.id, b.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  join wp_posts b on a.post_id = b.id  where user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:05:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'b.post_id' in 'field list' với truy vấn select a.id, b.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  join wp_posts b on a.post_id = b.id  where a.user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:06:55 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'b.post_id' in 'field list' với truy vấn select a.id, b.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  join wp_posts b on a.post_id = b.id  where a.user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:08:27 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'b.title' in 'field list' với truy vấn select a.id, a.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  join wp_posts b on a.post_id = b.id  where a.user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:08:49 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'b.title' in 'field list' với truy vấn select a.id, a.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  join wp_posts b on a.post_id = b.id  where a.user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:10:02 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'b.title' in 'field list' với truy vấn select a.id, a.post_id, b.title, a.place_code, a.place_text, a.level, a.posted_date, case when status = 0 then 'Bản nháp' else 'Đang mở' end as status_name  from wp_new_offer a  left join wp_posts b on a.post_id = b.id  where a.user_id = 21 yêu cầu bởi do_action('wp_ajax_action_load_all_offer'), WP_Hook->do_action, WP_Hook->apply_filters, call_user_func_array, action_load_all_offer, Offer->search
+[12-Jan-2018 17:13:05 UTC] PHP Notice:  Undefined index: ID in C:\xampp\htdocs\jobs\wp-includes\post.php on line 3618
+[12-Jan-2018 17:13:05 UTC] PHP Stack trace:
+[12-Jan-2018 17:13:05 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-admin\admin.php:0
+[12-Jan-2018 17:13:05 UTC] PHP   2. do_action() C:\xampp\htdocs\jobs\wp-admin\admin.php:224
+[12-Jan-2018 17:13:05 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:453
+[12-Jan-2018 17:13:05 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[12-Jan-2018 17:13:05 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 17:13:05 UTC] PHP   6. new_offer_page() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[12-Jan-2018 17:13:05 UTC] PHP   7. Offer->offer_update() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\new-offer-page.php:213
+[12-Jan-2018 17:13:05 UTC] PHP   8. wp_update_post() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\class.offer.php:7
+[12-Jan-2018 17:15:52 UTC] Cơ sở dữ liệu của WordPress gặp lỗi Unknown column 'a.post_url' in 'field list' với truy vấn SELECT a.post_url, a.title, a.place_text, a.posted_date, a.salary, c.name as com_name  FROM wp_new_offer a  JOIN wp_company c on c.user_id = a.user_id  WHERE a.status = 1 order by a.posted_date desc  LIMIT 0, 50 yêu cầu bởi require('C:\xampp\htdocs\jobs\wp-blog-header.php'), require_once('C:\xampp\htdocs\jobs\wp-includes\template-loader.php'), include('C:\xampp\htdocs\jobs\wp-content\themes\searchjob\front-page.php'), get_template_part, locate_template, load_template, require('C:\xampp\htdocs\jobs\wp-content\themes\searchjob\template-parts\content-list-job.php'), apply_filters('the_post_offer'), WP_Hook->apply_filters, call_user_func_array, the_post_offer
+[13-Jan-2018 07:42:07 UTC] PHP Warning:  Đã sẩy ra một lỗi bất ngờ. Có vấn đề với WordPress.org hoặc cấu hình máy chủ này. Nếu bạn tiếp tục gặp lỗi, hãy vào <a href="http://wordpress.org/support/">diễn đàn hỗ trợ</a>. (WordPress không thể thiết lập kết nối an toàn tới WordPress.org. Vui lòng liên hệ quản trị máy chủ của bạn.) in C:\xampp\htdocs\jobs\wp-includes\update.php on line 156
+[13-Jan-2018 07:42:07 UTC] PHP Stack trace:
+[13-Jan-2018 07:42:07 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-cron.php:0
+[13-Jan-2018 07:42:07 UTC] PHP   2. do_action_ref_array() C:\xampp\htdocs\jobs\wp-cron.php:126
+[13-Jan-2018 07:42:07 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:515
+[13-Jan-2018 07:42:07 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[13-Jan-2018 07:42:07 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[13-Jan-2018 07:42:07 UTC] PHP   6. wp_version_check() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[13-Jan-2018 07:42:07 UTC] PHP   7. trigger_error() C:\xampp\htdocs\jobs\wp-includes\update.php:156
+[13-Jan-2018 07:42:08 UTC] PHP Warning:  Đã sẩy ra một lỗi bất ngờ. Có vấn đề với WordPress.org hoặc cấu hình máy chủ này. Nếu bạn tiếp tục gặp lỗi, hãy vào <a href="http://wordpress.org/support/">diễn đàn hỗ trợ</a>. (WordPress không thể thiết lập kết nối an toàn tới WordPress.org. Vui lòng liên hệ quản trị máy chủ của bạn.) in C:\xampp\htdocs\jobs\wp-includes\update.php on line 348
+[13-Jan-2018 07:42:08 UTC] PHP Stack trace:
+[13-Jan-2018 07:42:08 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-cron.php:0
+[13-Jan-2018 07:42:08 UTC] PHP   2. do_action_ref_array() C:\xampp\htdocs\jobs\wp-cron.php:126
+[13-Jan-2018 07:42:08 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:515
+[13-Jan-2018 07:42:08 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[13-Jan-2018 07:42:08 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[13-Jan-2018 07:42:08 UTC] PHP   6. wp_update_plugins() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[13-Jan-2018 07:42:08 UTC] PHP   7. trigger_error() C:\xampp\htdocs\jobs\wp-includes\update.php:348
+[13-Jan-2018 07:42:08 UTC] PHP Warning:  Đã sẩy ra một lỗi bất ngờ. Có vấn đề với WordPress.org hoặc cấu hình máy chủ này. Nếu bạn tiếp tục gặp lỗi, hãy vào <a href="http://wordpress.org/support/">diễn đàn hỗ trợ</a>. (WordPress không thể thiết lập kết nối an toàn tới WordPress.org. Vui lòng liên hệ quản trị máy chủ của bạn.) in C:\xampp\htdocs\jobs\wp-includes\update.php on line 526
+[13-Jan-2018 07:42:08 UTC] PHP Stack trace:
+[13-Jan-2018 07:42:08 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-cron.php:0
+[13-Jan-2018 07:42:08 UTC] PHP   2. do_action_ref_array() C:\xampp\htdocs\jobs\wp-cron.php:126
+[13-Jan-2018 07:42:08 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:515
+[13-Jan-2018 07:42:08 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[13-Jan-2018 07:42:08 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[13-Jan-2018 07:42:08 UTC] PHP   6. wp_update_themes() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[13-Jan-2018 07:42:08 UTC] PHP   7. trigger_error() C:\xampp\htdocs\jobs\wp-includes\update.php:526

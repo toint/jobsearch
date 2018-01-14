@@ -31,6 +31,7 @@ function new_offer_page()
     $arr_language = array();
     $arr_human_skill = array();
     $status = '0';
+    $post_id = 0;
     
     $offer_id = '';
     if (isset($_GET['id'])) {
@@ -56,6 +57,7 @@ function new_offer_page()
         $txt_negociation = $offer_data->negociation;
         $status = $offer_data->status;
         $txt_post_date = date_to_MDY($offer_data->posted_date);
+        $post_id = $offer_data->post_id;
         
         $offer_meta = $offer->get_offer_meta_name_by_id($offer_id);
         if (!empty($offer_meta)) {
@@ -125,6 +127,9 @@ function new_offer_page()
         } else {
             $arr_human_skill = array();
         }
+        if (isset($_POST['post_id'])) {
+        	$post_id = $_POST['post_id'];
+        }
 
         if (empty($txt_place_code) || empty($txt_job_title) 
             || empty($txt_job_type) || empty($txt_occupation) 
@@ -146,8 +151,6 @@ function new_offer_page()
         
         $user = wp_get_current_user();
         $offer_data = array(
-            'post_url' => sanitize_title($txt_job_title),
-            'title' => $txt_job_title,
             'place_code' => $txt_place_code,
             'place_text' => $txt_place_name,
             'job_type' => $txt_job_type,
@@ -160,8 +163,17 @@ function new_offer_page()
             'version' => '1.0',
             'user_id' => $user->ID,
             'status' => $status,
-            'posted_date' => format_date($txt_post_date),
-        	'updated_date' => date('Y-m-d h:m:s')
+            'posted_date' => (empty($txt_post_date) == false? format_date($txt_post_date) : date('Y-m-d h:m:s')),
+        	'updated_date' => date('Y-m-d h:m:s'),
+        	'post_id' => $post_id
+        );
+        
+        $my_post = array(
+        		'post_title' => wp_strip_all_tags($txt_job_title),
+        		'post_content' => '',
+        		'post_status' => ($status == 1? 'publish' : 'draft'),
+        		'post_author'=> $user->ID,
+        		'post_category' => array(0, 2)
         );
         
         $meta_data = array();
@@ -188,7 +200,7 @@ function new_offer_page()
         
         $update_flag = true;
         if ($offer_id == '' || $offer_id == 0) {
-            $data = array('offer' => $offer_data, 'meta_data' => $meta_data);
+            $data = array('post' => $my_post, 'offer' => $offer_data, 'meta_data' => $meta_data);
             $offer_id = $offer->offer_save($data);
             if ($offer_id != '' && $offer_id != 0) {
                 $update_msg = __('Add New Offer Successfully!');
@@ -196,7 +208,8 @@ function new_offer_page()
                 $update_msg = __('Add New Offer Failed!');
             }
         } else {
-            $data = array('offer' => $offer_data, 'where' => array('id' => $offer_id), 'meta_data' => $meta_data);
+        	$my_post['ID'] = $post_id;
+            $data = array('post' => $my_post, 'offer' => $offer_data, 'where' => array('id' => $offer_id), 'meta_data' => $meta_data);
             $status_update = $offer->offer_update($data);
             if ($status_update == TRUE) {
                 $update_msg = __('Update New Offer Successfully!');
@@ -223,6 +236,7 @@ if ($update_flag) {
             <div class="panel-body">
                 <form method="post" id="frmNewOffer" class="form-horizontal">
                 <input type="hidden" name="id" value="<?php echo $offer_id; ?>" /> 
+                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>" /> 
                 	<div>
                 		<ul class="nav nav-tabs" role="tablist">
                 			<li role="presentation" class="active">

@@ -2,9 +2,10 @@
 function the_post_offer($args) {
     global $wpdb;
     
-    $sql = "SELECT a.post_url, a.title, a.place_text, a.posted_date, a.salary, c.name as com_name ";
+    $sql = "SELECT a.post_id, d.post_title title, a.place_text, a.posted_date, a.salary, c.name as com_name ";
     $sql .= " FROM " . $wpdb->prefix . "new_offer a ";
     $sql .= " JOIN " . $wpdb->prefix . "company c on c.user_id = a.user_id ";
+    $sql .= " JOIN " . $wpdb->prefix . "posts d on a.post_id = d.id ";
     $sql .= " WHERE a.status = 1 order by a.posted_date desc ";
     $sql .= " LIMIT " . $args[0] . ", " . $args[1];
     
@@ -41,7 +42,7 @@ function the_post_offer($args) {
 		<div class="post-content">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<a href="<?php echo get_site_url() . '/tim-viec-lam?page=' . $offer->post_url?>"><?php echo $offer->title;?></a>
+					<a href="<?php echo get_permalink($offer->post_id);?>"><?php echo $offer->title;?></a>
 				</div>
 			</div>
 			<div class="row">

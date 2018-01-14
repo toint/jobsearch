@@ -20,7 +20,7 @@
       		<div class="form-login">
       			<div class="row">
       				<div class="col-sm-6"><button type="button" class="btn btn-default"><img width="15" height="15" src="<?php echo get_template_directory_uri() . '/assets/images/facebook-icon.svg'?>" />&nbsp;Dùng tài khoản Facebook</button></div>
-      				<div class="col-sm-6 right"><button type="button" class="btn btn-default"><img width="15" height="15" src="<?php echo get_template_directory_uri() . '/assets/images/1000px-Google_Logo.svg';?>" />&nbsp;Dùng tài khoản Google</button></div>
+      				<div class="col-sm-6 right"><button type="button" class="btn btn-default"><img width="15" height="15" src="<?php echo get_template_directory_uri() . '/assets/images/1000px-Google_Logo.svg.png';?>" />&nbsp;Dùng tài khoản Google</button></div>
       			</div>
       			<br/>
       			<form id="frmLogin" method="post">

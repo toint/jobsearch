@@ -17,6 +17,9 @@ var ProgressBar = {
 }
 
 jQuery(document).ready(function($) {
+	
+	$(document).ajaxStart(function() { Pace.restart(); });
+	
 	var progressbar = $( "#progressbar" );
 	  
 	$('#progress-bar').dialog({

@@ -7,33 +7,43 @@ function toolbar_search_job_filter($args) {
     
 ?>
 <nav class="navbar navbar-default navbar-search">
-	<form class="form-inline navbar-form">
-		<div class="row">
-    		<div class="col-sm-10">
-    			<div class="col-sm-4">
-        			<div class="input-group col-sm-12">
-            			<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-search"></i></span>
-            			<input type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="<?php echo __('Chức danh, vị trí, kỹ năng...');?>" />
-            		</div>
-        		</div>
-        		<div class="col-sm-4">
-            		<div class="input-group col-sm-12">
-            			<span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-th-list"></i></span>
-            			<input type="text" class="form-control" aria-describedby="sizing-addon2" placeholder="<?php echo __('Ngành nghề');?>" />
-            		</div>
-        		</div>
-        		<div class="col-sm-4">
-            		<div class="input-group col-sm-12">
-            			<span class="input-group-addon" id="sizing-addon3"><i class="glyphicon glyphicon-map-marker"></i></span>
-            			<input type="text" class="form-control" aria-describedby="sizing-addon3" placeholder="<?php echo __('Địa điểm');?>" />
-            		</div>
-        		</div>
-    		</div>
-    		<div class="col-sm-2">
-    			<button type="submit" class="col-sm-12 btn btn-default"><?php echo __('Search');?></button>
-    		</div>
+	<div class="containerf-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-search-form" aria-expanded="false">
+				<span class="sr-only">Toogle navigation</span>
+				<span class="icon-bar"></button>
+				<span class="icon-bar"></button>
+				<span class="icon-bar"></button>
+			</button>
 		</div>
-	</form>
+		<form class="form-inline navbar-form collapse navbar-collapse" id="bs-search-form">
+			<div class="row">
+	    		<div class="col-sm-10">
+	    			<div class="col-sm-4">
+	        			<div class="input-group col-sm-12">
+	            			<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-search"></i></span>
+	            			<input type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="<?php echo __('Chức danh, vị trí, kỹ năng...');?>" />
+	            		</div>
+	        		</div>
+	        		<div class="col-sm-4">
+	            		<div class="input-group col-sm-12">
+	            			<span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-th-list"></i></span>
+	            			<input type="text" class="form-control" aria-describedby="sizing-addon2" placeholder="<?php echo __('Ngành nghề');?>" />
+	            		</div>
+	        		</div>
+	        		<div class="col-sm-4">
+	            		<div class="input-group col-sm-12">
+	            			<span class="input-group-addon" id="sizing-addon3"><i class="glyphicon glyphicon-map-marker"></i></span>
+	            			<input type="text" class="form-control" aria-describedby="sizing-addon3" placeholder="<?php echo __('Địa điểm');?>" />
+	            		</div>
+	        		</div>
+	    		</div>
+	    		<div class="col-sm-2">
+	    			<button type="submit" class="col-sm-12 btn btn-default"><?php echo __('Search');?></button>
+	    		</div>
+			</div>
+		</form>
+	</div>
 </nav>
 
 <nav class="navbar navbar-default navbar-filter">
