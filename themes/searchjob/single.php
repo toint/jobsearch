@@ -1,22 +1,15 @@
 <?php
-/**
- * The front page template file
- *
- * If the user has selected a static page for their homepage, this is what will
- * appear.
- * Learn more: https://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
- */
 
-get_header(); ?>
+get_header(); 
 
-    <?php echo get_template_part('template-parts/content', 'search'); ?>
-    
-    <h1>Single</h1>
-    
+?>
+
+<div class="page-view">
+	<div class="page-view-title">
+		<?php while ( have_posts() ) : the_post();?>
+		<?php echo apply_filters('the_detail_post', array('id' => the_ID()));?>
+		<?php endwhile; ?>
+	</div>
+</div>    
 
 <?php get_footer();
