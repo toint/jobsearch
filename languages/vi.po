@@ -12193,3 +12193,6 @@ msgstr "Khu vực:"
 
 msgid "Posted:"
 msgstr "Đã đăng:"
+
+msgid "Apply"
+msgstr "Nộp đơn"
