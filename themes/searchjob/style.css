@@ -220,6 +220,10 @@ input, button {
 	padding-bttom: 50px;
 }
 
+.page-detail-content .tab-content {
+	background: #fff;
+}
+
 /*--FOOTER--*/
 .footer {
 	background: #DBDBDB !important;

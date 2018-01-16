@@ -11,7 +11,7 @@ function the_detail_post($args) {
     if (!empty($query)) { 
     	$offer = $query[0]; 
     	$sql = "SELECT a.name, a.code FROM " . $wpdb->prefix . "offer_meta a ";
-    	$sql .= " JOIN " . $wpdb->prefix . "new_offer_meta b on a.id = b.meta_id and b.offer_id = " . $wpdb->offer_id;
+    	$sql .= " JOIN " . $wpdb->prefix . "new_offer_meta b on a.id = b.meta_id and b.offer_id = " . $offer->offer_id;
     	$offer_metas = $wpdb->get_results($sql);
 ?>
 <div class="page-view-background"></div>
@@ -43,16 +43,18 @@ function the_detail_post($args) {
         	 </ul>
         	 <div class="tab-content">
         	 	<div role="tabpanel" class="tab-pane active" id="home">
-        	 		<h3><?php echo __('JOB DESCRIPTION');?></h3>
+        	 		<div class="title"><?php echo __('JOB DESCRIPTION');?></div>
+        	 		<ul>
         	 		<?php 
         	 		if (!empty($offer_metas)) {
         	 		    foreach ($offer_metas as $meta) {
         	 		        if ($meta->code == 'JOB_ACTIVITY')
         	 		 ?>
-        	 		<div><?php echo $meta->name;?></div>
+        	 		<li><?php echo $meta->name;?></li>
         	 		<?php 
         	 		    }
         	 		}?>
+        	 		</ul>
         	 	</div>
         	 	<div role="tabpanel" class="tab-pane" id="profile">...</div>
         	 </div>

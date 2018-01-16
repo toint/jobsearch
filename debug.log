@@ -887,3 +887,27 @@
 [16-Jan-2018 11:04:30 UTC] Cơ sở dữ liệu của WordPress gặp lỗi You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 với truy vấn SELECT a.name, a.code FROM wp_offer_meta a  JOIN wp_new_offer_meta b on a.id = b.meta_id and b.offer_id =  yêu cầu bởi require('C:\xampp\htdocs\jobs\wp-blog-header.php'), require_once('C:\xampp\htdocs\jobs\wp-includes\template-loader.php'), include('C:\xampp\htdocs\jobs\wp-content\themes\searchjob\single.php'), apply_filters('the_detail_post'), WP_Hook->apply_filters, call_user_func_array, the_detail_post
 [16-Jan-2018 11:05:00 UTC] PHP Notice:  Undefined property: wpdb::$offer_id in C:\xampp\htdocs\jobs\wp-includes\wp-db.php on line 625
 [16-Jan-2018 11:05:00 UTC] Cơ sở dữ liệu của WordPress gặp lỗi You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 với truy vấn SELECT a.name, a.code FROM wp_offer_meta a  JOIN wp_new_offer_meta b on a.id = b.meta_id and b.offer_id =  yêu cầu bởi require('C:\xampp\htdocs\jobs\wp-blog-header.php'), require_once('C:\xampp\htdocs\jobs\wp-includes\template-loader.php'), include('C:\xampp\htdocs\jobs\wp-content\themes\searchjob\single.php'), apply_filters('the_detail_post'), WP_Hook->apply_filters, call_user_func_array, the_detail_post
+[16-Jan-2018 14:53:21 UTC] PHP Notice:  Undefined property: wpdb::$offer_id in C:\xampp\htdocs\jobs\wp-includes\wp-db.php on line 625
+[16-Jan-2018 14:53:21 UTC] PHP Stack trace:
+[16-Jan-2018 14:53:21 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\index.php:0
+[16-Jan-2018 14:53:21 UTC] PHP   2. require() C:\xampp\htdocs\jobs\index.php:17
+[16-Jan-2018 14:53:21 UTC] PHP   3. require_once() C:\xampp\htdocs\jobs\wp-blog-header.php:19
+[16-Jan-2018 14:53:21 UTC] PHP   4. include() C:\xampp\htdocs\jobs\wp-includes\template-loader.php:74
+[16-Jan-2018 14:53:21 UTC] PHP   5. apply_filters() C:\xampp\htdocs\jobs\wp-content\themes\searchjob\single.php:9
+[16-Jan-2018 14:53:21 UTC] PHP   6. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\plugin.php:203
+[16-Jan-2018 14:53:21 UTC] PHP   7. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[16-Jan-2018 14:53:21 UTC] PHP   8. the_detail_post() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[16-Jan-2018 14:53:21 UTC] PHP   9. wpdb->__get() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:14
+[16-Jan-2018 14:53:21 UTC] Cơ sở dữ liệu của WordPress gặp lỗi You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 với truy vấn SELECT a.name, a.code FROM wp_offer_meta a  JOIN wp_new_offer_meta b on a.id = b.meta_id and b.offer_id =  yêu cầu bởi require('C:\xampp\htdocs\jobs\wp-blog-header.php'), require_once('C:\xampp\htdocs\jobs\wp-includes\template-loader.php'), include('C:\xampp\htdocs\jobs\wp-content\themes\searchjob\single.php'), apply_filters('the_detail_post'), WP_Hook->apply_filters, call_user_func_array, the_detail_post
+[16-Jan-2018 14:53:32 UTC] PHP Notice:  Undefined property: wpdb::$offer_id in C:\xampp\htdocs\jobs\wp-includes\wp-db.php on line 625
+[16-Jan-2018 14:53:32 UTC] PHP Stack trace:
+[16-Jan-2018 14:53:32 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\index.php:0
+[16-Jan-2018 14:53:32 UTC] PHP   2. require() C:\xampp\htdocs\jobs\index.php:17
+[16-Jan-2018 14:53:32 UTC] PHP   3. require_once() C:\xampp\htdocs\jobs\wp-blog-header.php:19
+[16-Jan-2018 14:53:32 UTC] PHP   4. include() C:\xampp\htdocs\jobs\wp-includes\template-loader.php:74
+[16-Jan-2018 14:53:32 UTC] PHP   5. apply_filters() C:\xampp\htdocs\jobs\wp-content\themes\searchjob\single.php:9
+[16-Jan-2018 14:53:32 UTC] PHP   6. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\plugin.php:203
+[16-Jan-2018 14:53:32 UTC] PHP   7. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[16-Jan-2018 14:53:32 UTC] PHP   8. the_detail_post() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[16-Jan-2018 14:53:32 UTC] PHP   9. wpdb->__get() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:14
+[16-Jan-2018 14:53:32 UTC] Cơ sở dữ liệu của WordPress gặp lỗi You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 với truy vấn SELECT a.name, a.code FROM wp_offer_meta a  JOIN wp_new_offer_meta b on a.id = b.meta_id and b.offer_id =  yêu cầu bởi require('C:\xampp\htdocs\jobs\wp-blog-header.php'), require_once('C:\xampp\htdocs\jobs\wp-includes\template-loader.php'), include('C:\xampp\htdocs\jobs\wp-content\themes\searchjob\single.php'), apply_filters('the_detail_post'), WP_Hook->apply_filters, call_user_func_array, the_detail_post
