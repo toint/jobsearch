@@ -13,6 +13,7 @@
  */
 
 get_header(); ?>
+<div class="page-container container">
 	<?php echo get_template_part('template-parts/content', 'search'); ?>
     <div class="page-content">
     	<div class="row">

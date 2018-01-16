@@ -16,6 +16,6 @@
         <?php echo get_template_part('template-parts/authentication/content', 'register'); ?>
         <?php echo get_template_part('template-parts/authentication/content', 'login'); ?>
         <div class="page">
-            <div class="page-container container">
+            
             
     

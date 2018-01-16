@@ -12194,5 +12194,14 @@ msgstr "Khu vực:"
 msgid "Posted:"
 msgstr "Đã đăng:"
 
-msgid "Apply"
+msgid "Apply Now"
 msgstr "Nộp đơn"
+
+msgid "JOB INFO"
+msgstr "CHI TIẾT CÔNG VIỆC"
+
+msgid "COMPANY INFO"
+msgstr "THÔNG TIN DOANH NGHIỆP"
+
+msgid "JOB DESCRIPTION"
+msgstr "MÔ TẢ CÔNG VIỆC"

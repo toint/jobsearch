@@ -32,7 +32,7 @@ html, body {
 input, button {
 	border-radius: 0px !important;
 	box-shadow: none !important;
-	background: #fff !important;
+/* 	background: #fff !important; */
 }
 
 .left: {
@@ -178,6 +178,46 @@ input, button {
 .form-login {
 	margin-left: 10%;
 	margin-right: 10%;
+}
+
+/* DETAIL */
+.page-view {
+	position: relative;	
+}
+
+.page-view-background {
+	background: #21C8FB;
+	height: 200px;
+	width: 100%;
+	z-index: 0;
+	position: absolute;
+	background-position: top center;
+	background-size: cover;
+}
+
+.page-detail {
+	z-index: 1;
+	position: relative;	
+	padding-top: 100px;
+}
+
+.page-detail-title {
+	
+}
+
+.page-title-container {
+	background: #fff;
+}
+
+.page-title-container .thumbnail {
+	border: none;
+	box-shadow: none;
+	margin: 4px;
+}
+
+.page-title-container .view-btn {
+	padding-top: 50px;
+	padding-bttom: 50px;
 }
 
 /*--FOOTER--*/
