@@ -931,3 +931,21 @@
 [17-Jan-2018 09:16:49 UTC] PHP Warning:  require_once(C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin/new-post-page.php): failed to open stream: No such file or directory in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\candiate.php on line 36
 [17-Jan-2018 09:16:49 UTC] PHP Fatal error:  require_once(): Failed opening required 'C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin/new-post-page.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\candiate.php on line 36
 [17-Jan-2018 10:57:14 UTC] PHP Notice:  Undefined variable: txt_salary in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\new-post-page.php on line 47
+[17-Jan-2018 14:31:19 UTC] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, boolean given in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\recruiter.php on line 56
+[17-Jan-2018 14:31:19 UTC] PHP Stack trace:
+[17-Jan-2018 14:31:19 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-admin\admin-ajax.php:0
+[17-Jan-2018 14:31:19 UTC] PHP   2. do_action() C:\xampp\htdocs\jobs\wp-admin\admin-ajax.php:112
+[17-Jan-2018 14:31:19 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:453
+[17-Jan-2018 14:31:19 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[17-Jan-2018 14:31:19 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[17-Jan-2018 14:31:19 UTC] PHP   6. create_account() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[17-Jan-2018 14:31:19 UTC] PHP   7. format_date() C:\xampp\htdocs\jobs\wp-content\themes\searchjob\inc\register-functions.php:157
+[17-Jan-2018 14:31:19 UTC] PHP   8. date_format() C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\recruiter.php:56
+[17-Jan-2018 15:16:13 UTC] PHP Notice:  Undefined variable: status in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\new-post-page.php on line 33
+[17-Jan-2018 15:16:13 UTC] PHP Stack trace:
+[17-Jan-2018 15:16:13 UTC] PHP   1. {main}() C:\xampp\htdocs\jobs\wp-admin\admin.php:0
+[17-Jan-2018 15:16:13 UTC] PHP   2. do_action() C:\xampp\htdocs\jobs\wp-admin\admin.php:224
+[17-Jan-2018 15:16:13 UTC] PHP   3. WP_Hook->do_action() C:\xampp\htdocs\jobs\wp-includes\plugin.php:453
+[17-Jan-2018 15:16:13 UTC] PHP   4. WP_Hook->apply_filters() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:310
+[17-Jan-2018 15:16:13 UTC] PHP   5. call_user_func_array:{C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286}() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286
+[17-Jan-2018 15:16:13 UTC] PHP   6. new_post_page() C:\xampp\htdocs\jobs\wp-includes\class-wp-hook.php:286

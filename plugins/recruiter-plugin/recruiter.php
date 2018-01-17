@@ -76,3 +76,4 @@ require_once( RECRUITER__PLUGIN_DIR . 'offer-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'new-offer-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'all-post-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'new-post-page.php' );
+require_once( RECRUITER__PLUGIN_DIR . 'class.post.php' );

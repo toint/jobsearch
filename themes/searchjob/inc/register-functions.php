@@ -145,6 +145,8 @@ function create_account()
 		exit();
 	}
 
+	
+	
 	$com_data = array(
 		'name' => $company_name,
 		'address' => $company_address,
@@ -174,7 +176,10 @@ function create_account()
 	add_user_meta($user_id, 'first_name', $first_name, false);
 	add_user_meta($user_id, 'last_name', $first_name, false);
 	add_user_meta($user_id, 'role', $role);
-
+	
+	$u = new WP_User($user_id);
+	$u->set_role($role);
+	
 	$res = array('status' => true, 'tab' => 1, 'message' => 'Create a account success!');
 	die(json_encode($res));
 	exit();
