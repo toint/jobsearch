@@ -1,7 +1,8 @@
 <?php
 
 function add_roles_on_plugin_activation() {
-	add_role( 'candidate', __('Candidate'), array( 'read' => true, 'candidate' => true ) );
+    add_role( 'candidate', __('Candidate'), array( 'read' => true, 'candidate' => true) );
+    
 	add_role('recruiter', __('Recruiter'), array('read' => true, 'recruiter' => true) );
 }
 register_activation_hook( __FILE__, 'add_roles_on_plugin_activation' );
@@ -40,6 +41,8 @@ function searchjob_setup() {
 	) );
 	add_theme_support( 'customize-selective-refresh-widgets' );
 	add_editor_style( array( 'assets/css/editor-style.css',searchjob_fonts_url() ) );
+	
+	update_option('show_avatars', '0', true);
 }
 add_action( 'after_setup_theme', 'searchjob_setup' );
 

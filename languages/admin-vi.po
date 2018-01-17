@@ -11135,3 +11135,18 @@ msgstr "Không tìm thấy trang này."
 
 msgid "The Title New Offer"
 msgstr "Tiêu đề công việc"
+
+msgid "All Post"
+msgstr "Tin nhanh"
+
+msgid "Post New Now"
+msgstr "Đăng tin nhanh"
+
+msgid "Post Now"
+msgstr "Đăng ngay"
+
+msgid "Enter Title"
+msgstr "Nhập tiêu đề"
+
+msgid "Enter Salary"
+msgstr "Nhập mức lương"

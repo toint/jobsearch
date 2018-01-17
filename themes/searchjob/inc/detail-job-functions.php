@@ -1,7 +1,7 @@
 <?php
 function the_detail_post($args) {
     global $wpdb;
-    $sql = "SELECT a.id as offer_id, b.name com_name, a.place_text from " . $wpdb->prefix . "new_offer a ";
+    $sql = "SELECT a.id as offer_id, b.name com_name, a.place_text, b.description as com_des from " . $wpdb->prefix . "new_offer a ";
     $sql .= " LEFT JOIN " .$wpdb->prefix . "company b on a.user_id = b.user_id ";
     $sql .= " WHERE a.post_id = " . get_the_ID();
     
@@ -41,24 +41,48 @@ function the_detail_post($args) {
         	 	<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><?php echo __('JOB INFO');?></a></li>
         	 	<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><?php echo __('COMPANY INFO');?></a></li>
         	 </ul>
-        	 <div class="tab-content">
+    	</div>
+    	 <div class="content-container container">
+    	 	<div class="tab-content">
         	 	<div role="tabpanel" class="tab-pane active" id="home">
         	 		<div class="title"><?php echo __('JOB DESCRIPTION');?></div>
-        	 		<ul>
+        	 		
         	 		<?php 
+        	 		$job_activity = '';
+        	 		$job_skill = '';
         	 		if (!empty($offer_metas)) {
         	 		    foreach ($offer_metas as $meta) {
-        	 		        if ($meta->code == 'JOB_ACTIVITY')
-        	 		 ?>
-        	 		<li><?php echo $meta->name;?></li>
-        	 		<?php 
+        	 		        if ($meta->code == 'JOB_ACTIVITY') {
+        	 		            $job_activity .= '<li>' . $meta->name . '</li>';
+        	 		        }
+        	 		        elseif ($meta->code = 'IT_SKILL') {
+        	 		            $job_skill .= '<li>' . $meta->name . '</li>';
+        	 		        }
         	 		    }
         	 		}?>
-        	 		</ul>
+        	 		
+        	 		<?php 
+        	 		if ($job_activity != '') {
+    	 		        echo '<ul class="list-activity">'. $job_activity . '</ul>';
+        	 		}
+        	 		if ($job_skill != '') {
+    	 		    ?>
+    	 		    <div class="title"><?php echo __('IT SKILLS');?></div>
+    	 		    <ul class="list">
+    	 		    	<?php echo $job_skill;?>
+    	 		    </ul>
+    	 		    <?php 
+        	 		}
+        	 		?>
+        	 		
         	 	</div>
-        	 	<div role="tabpanel" class="tab-pane" id="profile">...</div>
+        	 	<div role="tabpanel" class="tab-pane" id="profile">
+        	 		<div class="detail-profile">
+        	 			<?php echo $offer->com_des;?>
+        	 		</div>
+        	 	</div>
         	 </div>
-    	</div>
+		</div>
     </div>
 </div>
 <?php     

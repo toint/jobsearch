@@ -220,8 +220,44 @@ input, button {
 	padding-bttom: 50px;
 }
 
+.page-detail-content {
+	padding-bottom: 50px;
+}
+
 .page-detail-content .tab-content {
 	background: #fff;
+}
+
+.page-detail-content .nav-tabs {
+	border: 0px;
+}
+
+.page-detail-content .content-container {
+	background: #fff;
+	border-top: 1px solid #ddd;
+}
+
+.page-detail-content .nav-tabs>li.active>a, .page-detail-content .nav-tabs>li.active>a:focus, .page-detail-content .nav-tabs>li.active>a:hover {
+	border: 0px;
+	background: #EEEEEE;
+	font-weight: bold;
+	border-bottom: 3px solid #686868;
+	font-size: 16px;
+}
+
+.page-detail-content .title {
+	font-size: 24px;
+	padding: 50px 20px 20px 20px;
+	font-weight: bold;
+}
+
+.page-detail-content .list-activity {
+	padding: 20px;
+	margin: 0px 20px 50px 20px;
+}
+
+.page-detail-content .detail-profile {
+	padding: 50px 20px 50px 20px;
 }
 
 /*--FOOTER--*/

@@ -22,13 +22,14 @@ function load_custom_wp_admin_style($hook) {
 	//wp_enqueue_style( 'datatablecss', plugins_url('/assets/css/datatables.css', __FILE__) );
 	//echo $hook;
 	if ($hook == 'toplevel_page_offer_main_menu') {
-	    wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/all-offer-page.js' , array(), '1.0', true );
+	    wp_enqueue_script( 'all-offer-page-js', plugin_dir_url( __FILE__ ) . '/assets/js/all-offer-page.js' , array(), '1.0', true );
 	}
 	if ($hook == 'all-offers_page_offer_page') {
-		wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/offer-page.js' , array(), '1.0', true );
+		wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/map.js' , array(), '1.0', true );
+		wp_enqueue_script( 'offer-page-js', plugin_dir_url( __FILE__ ) . '/assets/js/offer-page.js' , array(), '1.0', true );
 	}
 	if ($hook == 'toplevel_page_company_main_menu') {
-		wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/company.js' , array(), '1.0', true );
+		wp_enqueue_script( 'company-js', plugin_dir_url( __FILE__ ) . '/assets/js/company.js' , array(), '1.0', true );
 	}
 
 	wp_enqueue_script( 'recruiter-js', plugin_dir_url( __FILE__ ) . '/assets/js/recruiters.js' , array(), '1.0', true );
@@ -38,11 +39,14 @@ add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
 function recruiter_create_menu()
 {
-	add_menu_page('All Offers', 'All Offers', 'recruiter', 'offer_main_menu', 'list_offer_page', plugins_url('/images/job.png', __FILE__));
+    add_menu_page(__('All Post'), __('All Post'), 'recruiter', 'post_main_menu', 'all_post_page', plugins_url('/images/post.png', __FILE__));
+    add_submenu_page('post_main_menu', __('Post Now'), __('Post Now'), 'recruiter', 'recruiter_post_page', 'new_post_page');
+    
+	add_menu_page(__('All Offers'), __('All Offers'), 'recruiter', 'offer_main_menu', 'list_offer_page', plugins_url('/images/job.png', __FILE__));
 	
-	add_submenu_page('offer_main_menu', 'New Offer', 'New Offer', 'recruiter', 'offer_page', 'new_offer_page');
+	add_submenu_page('offer_main_menu', __('New Offer'), __('New Offer'), 'recruiter', 'offer_page', 'new_offer_page');
 
-	add_menu_page('Company', 'Company', 'recruiter', 'company_main_menu', 'update_company_plugin_page', plugins_url('/images/job.png', __FILE__));
+	add_menu_page(__('Company'), __('Company'), 'recruiter', 'company_main_menu', 'update_company_plugin_page', plugins_url('/images/company.png', __FILE__));
 	
 }
 add_action('admin_menu', 'recruiter_create_menu');
@@ -70,3 +74,5 @@ require_once( RECRUITER__PLUGIN_DIR . 'class.contract-duration.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'company-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'offer-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'new-offer-page.php' );
+require_once( RECRUITER__PLUGIN_DIR . 'all-post-page.php' );
+require_once( RECRUITER__PLUGIN_DIR . 'new-post-page.php' );

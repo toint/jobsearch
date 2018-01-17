@@ -165,7 +165,8 @@ function new_offer_page()
             'status' => $status,
             'posted_date' => (empty($txt_post_date) == false? format_date($txt_post_date) : date('Y-m-d h:m:s')),
         	'updated_date' => date('Y-m-d h:m:s'),
-        	'post_id' => $post_id
+        	'post_id' => $post_id,
+            'type' => 0
         );
         
         $my_post = array(
