@@ -31,6 +31,14 @@ function load_custom_wp_admin_style($hook) {
 	if ($hook == 'toplevel_page_company_main_menu') {
 		wp_enqueue_script( 'company-js', plugin_dir_url( __FILE__ ) . '/assets/js/company.js' , array(), '1.0', true );
 	}
+	if ($hook == 'toplevel_page_post_main_menu') {
+	    wp_enqueue_script( 'post-js', plugin_dir_url( __FILE__ ) . '/assets/js/post.js' , array(), '1.0', true );
+	    wp_localize_script( 'ajax-script', 'post_var', array( 'url' => 'recruiter_post_page' ));
+	}
+	if ($hook == 'all-post_page_recruiter_post_page') {
+	    wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/map.js' , array(), '1.0', true );
+	    wp_enqueue_script( 'new-post-js', plugin_dir_url( __FILE__ ) . '/assets/js/new-post.js' , array(), '1.0', true );
+	}
 
 	wp_enqueue_script( 'recruiter-js', plugin_dir_url( __FILE__ ) . '/assets/js/recruiters.js' , array(), '1.0', true );
 	wp_localize_script( 'ajax-script', 'admin_url', array( 'url' => admin_url( 'admin.php' ), 'nonce' => wp_create_nonce('ajaxnonce') )); // setting ajaxurl
@@ -77,3 +85,4 @@ require_once( RECRUITER__PLUGIN_DIR . 'new-offer-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'all-post-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'new-post-page.php' );
 require_once( RECRUITER__PLUGIN_DIR . 'class.post.php' );
+

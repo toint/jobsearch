@@ -8,6 +8,21 @@ function new_post_page() {
     $txt_post_content = '';
     $txt_salary = '';
     $user = wp_get_current_user();
+    $msg_err = '';
+    if (isset($_GET['id'])) {
+        $offer_id = $_GET['id'];
+        $post = new Post();
+        $posts = $post->search(array('id' => $offer_id));
+        if (!empty($posts)) {
+            $offer = $posts[0];
+            $post_id = $offer->post_id;
+            $txt_job_title = $offer->title;
+            $txt_place_code = $offer->place_code;
+            $txt_place_name = $offer->place_text;
+            $txt_post_content = $offer->post_content;
+            $txt_salary = $offer->salary;
+        }
+    }
     
     if (isset($_POST['placeName']) && isset($_POST['placeCode']) 
     		&& isset($_POST['jobTitle']) && isset($_POST['salary']) 
@@ -17,30 +32,66 @@ function new_post_page() {
     			$txt_job_title = $_POST['jobTitle'];
     			$txt_salary = $_POST['salary'];
     			$txt_post_content = $_POST['postContent'];
+    			$offer_id = $_POST['id'];
+    			$post_id = $_POST['post_id'];
     			
     			if (!empty($txt_job_title) && !empty($txt_place_code) && !empty($txt_place_name) && !empty($txt_salary) && !empty($txt_post_content)) {
     				$offer_data = array('place_code' => $txt_place_code, 
-    						'place_name' => $txt_place_name, 
+    						'place_text' => $txt_place_name, 
     						'salary' => $txt_salary,
     						'version' => '1.0',
     						'user_id' => $user->ID,
-    						'posted_date' => (empty($txt_post_date) == false? format_date($txt_post_date) : date('Y-m-d h:m:s')),
+    				        'posted_date' => date('Y-m-d h:m:s'),
     						'updated_date' => date('Y-m-d h:m:s'),
-    						'type' => 1
+    				        'status' => 1,
+    						'type' => 1,
+    				        'post_id' => 0
     				);
-    				$post_data = array('title' => wp_strip_all_tags($txt_job_title),
+    				
+    				$post_data = array('post_title' => wp_strip_all_tags($txt_job_title),
     						'post_content' => $txt_post_content,
-    						'post_status' => 1,
+    						'post_status' => 'publish',
     						'post_author'=> $user->ID,
-    						'post_category' => array(0, 2)
+    						'post_category' => array(1, 1)
     				);
     				$post = new Post();
-    				$offer_id = $post->insert($offer_data, $post_data);
+    				
+    				if ($offer_id != '' && $offer_id > 0 && $post_id != '' && $post_id > 0) {
+    				    $offer_data['post_id'] = $post_id;
+    				    $post_data['ID'] = $post_id;
+    				    $post->update($offer_data, $post_data, $offer_id);
+    				} else {
+        				$offer_id = $post->insert($offer_data, $post_data);
+        				$post_id = $offer_data['post_id'];
+    				}
+    				
+    				if ($offer_id != FALSE) {
+    				    $msg_err = __('Update Successfully.');
+    				} else {
+    				    $msg_err = __('Update Failed.');
+    				}
+    				
+    			} else {
+    			    $msg_err = __('All fields is required.');
     			}
     }
     
 ?>
 <br/>
+<?php 
+if ($msg_err != '') {
+?>
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      		<span aria-hidden="true">&times;</span>
+    	</button>
+    	<?php echo $msg_err;?>
+    </div>
+</div>
+<?php 
+}
+?>
 <div class="container">
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -75,7 +126,7 @@ function new_post_page() {
                 <div class="form-group">
                 	<label for="postContent" class="col-sm-2 control-label"><?php echo __('Post Content');?></label>
                     <div class="col-sm-10">
-                    	<textarea rows="3" cols="1" class="form-control" name="postContent" id="postContent" placeholder="<?php echo __('Enter Post Content'); ?>"><?php echo $txt_post_content;?></textarea>
+                    	<textarea rows="3" cols="1" class="form-control" maxlength="250" name="postContent" id="postContent" placeholder="<?php echo __('Enter Post Content'); ?>"><?php echo $txt_post_content;?></textarea>
                     </div>
                 </div>
                 <div class="form-group">

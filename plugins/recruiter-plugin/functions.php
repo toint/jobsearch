@@ -131,3 +131,12 @@ function action_load_all_offer() {
     die(json_encode($data));
 }
 add_action('wp_ajax_action_load_all_offer', 'action_load_all_offer');
+
+function action_load_all_post() {
+    $data = array();
+    $post = new Post();
+    
+    $data = $post->search(array());
+    die(json_encode($data));
+}
+add_action('wp_ajax_action_load_all_post', 'action_load_all_post');

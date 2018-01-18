@@ -12205,3 +12205,9 @@ msgstr "THÔNG TIN DOANH NGHIỆP"
 
 msgid "JOB DESCRIPTION"
 msgstr "MÔ TẢ CÔNG VIỆC"
+
+msgid "NEWS NOW"
+msgstr "TIN NHANH"
+
+msgid "From"
+msgstr "Từ"

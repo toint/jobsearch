@@ -21,7 +21,7 @@ get_header(); ?>
     			<?php echo get_template_part('template-parts/content', 'list-job'); ?>
     		</div>
     		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-    			
+    			<?php echo get_template_part('template-parts/content', 'list-post'); ?>
     		</div>
     	</div>
     </div>	

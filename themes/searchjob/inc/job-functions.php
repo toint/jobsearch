@@ -6,7 +6,7 @@ function the_post_offer($args) {
     $sql .= " FROM " . $wpdb->prefix . "new_offer a ";
     $sql .= " JOIN " . $wpdb->prefix . "company c on c.user_id = a.user_id ";
     $sql .= " JOIN " . $wpdb->prefix . "posts d on a.post_id = d.id ";
-    $sql .= " WHERE a.status = 1 order by a.posted_date desc ";
+    $sql .= " WHERE a.status = 1 and a.type = 0 order by a.posted_date desc ";
     $sql .= " LIMIT " . $args[0] . ", " . $args[1];
     
     $offers = $wpdb->get_results($sql);
@@ -16,7 +16,7 @@ function the_post_offer($args) {
     $sql = "SELECT COUNT(*) as total ";
     $sql .= " FROM " . $wpdb->prefix . "new_offer a ";
     $sql .= " JOIN " . $wpdb->prefix . "company c on c.user_id = a.user_id ";
-    $sql .= " WHERE a.status = 1 order by a.posted_date desc ";
+    $sql .= " WHERE a.status = 1 and a.type = 0 order by a.posted_date desc ";
     
     $count = $wpdb->get_results($sql);
     $rownum = 0;

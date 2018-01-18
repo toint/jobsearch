@@ -11150,3 +11150,12 @@ msgstr "Nhập tiêu đề"
 
 msgid "Enter Salary"
 msgstr "Nhập mức lương"
+
+msgid "All fields is required."
+msgstr "Tất cả các trường là bắt buộc."
+
+msgid "Update Successfully."
+msgstr "Cập nhật thành công."
+
+msgid "Update Failed."
+msgstr "Cập nhật lỗi."

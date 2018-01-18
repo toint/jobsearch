@@ -158,3 +158,4 @@ require get_theme_file_path( '/inc/register-functions.php' );
 require get_theme_file_path( '/inc/job-functions.php' );
 require get_theme_file_path( '/inc/search-job-functions.php' );
 require get_theme_file_path( '/inc/detail-job-functions.php' );
+require get_theme_file_path( '/inc/post-functions.php' );

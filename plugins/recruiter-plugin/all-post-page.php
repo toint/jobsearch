@@ -6,7 +6,7 @@ function all_post_page() {
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<button class="btn btn-default" type="button"><?php echo __('Post Now');?></button>
+			<button id="bntPostNow" class="btn btn-default" type="button"><?php echo __('Post Now');?></button>
 		</div>
 	</div>
 	<br/>
