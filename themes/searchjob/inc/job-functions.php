@@ -6,8 +6,19 @@ function the_post_offer($args) {
     $sql .= " FROM " . $wpdb->prefix . "new_offer a ";
     $sql .= " JOIN " . $wpdb->prefix . "company c on c.user_id = a.user_id ";
     $sql .= " JOIN " . $wpdb->prefix . "posts d on a.post_id = d.id ";
-    $sql .= " WHERE a.status = 1 and a.type = 0 order by a.posted_date desc ";
-    $sql .= " LIMIT " . $args[0] . ", " . $args[1];
+    $sql .= " WHERE a.status = 1 and a.type = 0  ";
+    
+    if (null != $args[2] && !empty($args[2])) {
+        $sql .= " AND (LOWER(a.job_type) LIKE '%" .strtolower($args[2]) ."%' OR LOWER(a.level) LIKE '%" .strtolower($args[2]) . "%')";
+    }
+    if (null != $args[3] && !empty($args[3])) {
+        $sql .= " a.id IN (SELECT mt.offer_id FROM " . $wpdb->prefix . "new_offer_meta mt JOIN " . $wpdb->prefix . "offer_meta o ON o.id = mt.meta_id WHERE LOWER(o.name) LIKE '%" . strtolower($args[3]) . "%') ";
+    }
+    if (null != $args[4] && !empty($args[4])) {
+        $sql .= " AND (LOWER(a.place_text) LIKE '%" . strtolower($args[4]) . "%') ";
+    }
+    
+    $sql .= " order by a.posted_date desc LIMIT " . $args[0] . ", " . $args[1];
     
     $offers = $wpdb->get_results($sql);
     $current_row = $wpdb->num_rows;

@@ -16,25 +16,25 @@ function toolbar_search_job_filter($args) {
 				<span class="icon-bar"></button>
 			</button>
 		</div>
-		<form class="form-inline navbar-form collapse navbar-collapse" id="bs-search-form">
+		<form class="form-inline navbar-form collapse navbar-collapse" method="get" id="bs-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 			<div class="row">
 	    		<div class="col-sm-10">
 	    			<div class="col-sm-4">
 	        			<div class="input-group col-sm-12">
 	            			<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-search"></i></span>
-	            			<input type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="<?php echo __('Chức danh, vị trí, kỹ năng...');?>" />
+	            			<input type="text" name="s" class="form-control" aria-describedby="sizing-addon1" placeholder="<?php echo __('Chức danh, vị trí, kỹ năng...');?>" />
 	            		</div>
 	        		</div>
 	        		<div class="col-sm-4">
 	            		<div class="input-group col-sm-12">
 	            			<span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-th-list"></i></span>
-	            			<input type="text" class="form-control" aria-describedby="sizing-addon2" placeholder="<?php echo __('Ngành nghề');?>" />
+	            			<input type="text" name="jobType" class="form-control" aria-describedby="sizing-addon2" placeholder="<?php echo __('Ngành nghề');?>" />
 	            		</div>
 	        		</div>
 	        		<div class="col-sm-4">
 	            		<div class="input-group col-sm-12">
 	            			<span class="input-group-addon" id="sizing-addon3"><i class="glyphicon glyphicon-map-marker"></i></span>
-	            			<input type="text" class="form-control" aria-describedby="sizing-addon3" placeholder="<?php echo __('Địa điểm');?>" />
+	            			<input type="text" name="place" class="form-control" aria-describedby="sizing-addon3" placeholder="<?php echo __('Địa điểm');?>" />
 	            		</div>
 	        		</div>
 	    		</div>

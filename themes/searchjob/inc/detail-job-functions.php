@@ -49,19 +49,27 @@ function the_detail_post($args) {
     	 	<div class="tab-content">
         	 	<div role="tabpanel" class="tab-pane active" id="home">
         	 		<div class="row">
-        	 			<div class="col-md-9">
+        	 			<div class="col-md-8">
                 	 		<div class="title"><?php echo __('JOB DESCRIPTION');?></div>
                 	 		
                 	 		<?php 
                 	 		$job_activity = '';
                 	 		$job_skill = '';
+                	 		$job_level = '';
+                	 		$job_language = '';
                 	 		if (!empty($offer_metas)) {
                 	 		    foreach ($offer_metas as $meta) {
                 	 		        if ($meta->code == 'JOB_ACTIVITY') {
                 	 		            $job_activity .= '<li>' . $meta->name . '</li>';
                 	 		        }
-                	 		        elseif ($meta->code = 'IT_SKILL') {
-                	 		            $job_skill .= '<li>' . $meta->name . '</li>';
+                	 		        elseif ($meta->code == 'IT_SKILL') {
+                	 		            $job_skill .= '<span>' . $meta->name . '</span><br/>';
+                	 		        }
+                	 		        elseif ($meta->code == 'LEVEL') {
+                	 		            $job_level .= '<span>' . $meta->name . '</span><br/>';
+                	 		        }
+                	 		        elseif ($meta->code == 'LANGUAGE') {
+                	 		            $job_language .= '<span>' . $meta->name . '</span><br/>';
                 	 		        }
                 	 		    }
                 	 		}?>
@@ -70,15 +78,7 @@ function the_detail_post($args) {
                 	 		if ($job_activity != '') {
             	 		        echo '<ul class="list-activity">'. $job_activity . '</ul>';
                 	 		}
-                	 		if ($job_skill != '') {
             	 		    ?>
-            	 		    <div class="title"><?php echo __('IT SKILLS');?></div>
-            	 		    <ul class="list">
-            	 		    	<?php echo $job_skill;?>
-            	 		    </ul>
-            	 		    <?php 
-                	 		}
-                	 		?>
                 	 		
                 	 		<div class="row">
                 	 			<div class="col-md-12">
@@ -86,19 +86,58 @@ function the_detail_post($args) {
                 	 			</div>
                 	 		</div>
         	 			</div>
-        	 			<div class="col-md-3">
+        	 			<div class="col-md-4">
         	 				<div class="the-post-time">
-        	 					<div class="the-post-line">
-        	 						<div class="col-sm-2">
-        	 							<i class="glyphicon glyphicon-calendar"></i>
-        	 						</div>
-        	 						<div class="col-sm-10">
-        	 							<div><?php echo __('Posted Date')?></div>
-        	 							<div><?php echo $offer->posted_date;?></div>
-        	 						</div>
-        	 					</div>
-        	 					<div class="the-post-line"></div>
-        	 					<div class="the-post-line"></div>
+            	 				<div class="row the-post-line">
+            	 					<div class="col-sm-2">
+            	 						<i class="fa fa-calendar"></i>
+            	 					</div>
+            	 					<div class="col-sm-10">
+            	 						<span><?php echo __('POSTED DATE')?></span>
+            	 						<br/>
+            	 						<span><b><?php echo $offer->posted_date;?></b></span>
+            	 					</div>
+            	 				</div>
+            	 				<div class="row the-post-line">
+            	 					<div class="col-sm-2">
+            	 						<i class="fa fa-files-o"></i>
+            	 					</div>
+            	 					<div class="col-sm-10">
+            	 						<span><?php echo __('JOB LEVEL')?></span>
+            	 						<br/>
+            	 						<span><b><?php echo $job_level;?></b></span>
+            	 					</div>
+            	 				</div>
+            	 				<div class="row the-post-line">
+            	 					<div class="col-sm-2">
+            	 						<i class="fa fa-book"></i>
+            	 					</div>
+            	 					<div class="col-sm-10">
+            	 						<span><?php echo __('JOB CATEGORY')?></span>
+            	 						<br/>
+            	 						<span><b></b></span>
+            	 					</div>
+            	 				</div>
+            	 				<div class="row the-post-line">
+            	 					<div class="col-sm-2">
+            	 						<i class="fa fa-flag"></i>
+            	 					</div>
+            	 					<div class="col-sm-10">
+            	 						<span><?php echo __('SKILL')?></span>
+            	 						<br/>
+            	 						<span><b><?php echo $job_skill;?></b></span>
+            	 					</div>
+            	 				</div>
+            	 				<div class="row the-post-line">
+            	 					<div class="col-sm-2">
+            	 						<i class="fa fa-language"></i>
+            	 					</div>
+            	 					<div class="col-sm-10">
+            	 						<span><?php echo __('PREFERRED LANGUAGE')?></span>
+            	 						<br/>
+            	 						<span><b><?php echo $job_language;?></b></span>
+            	 					</div>
+            	 				</div>
         	 				</div>
         	 			</div>
         	 		</div>

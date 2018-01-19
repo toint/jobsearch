@@ -118,6 +118,7 @@ function searchjob_scripts()
 	 ));
 
 	
+	wp_enqueue_style( 'font-awesome', get_theme_file_uri( '/assets/css/font-awesome.min.css' ), array(), '4.7.0' );
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/assets/css/bootstrap.min.css' ), array(), '3.3.7' );
 	wp_enqueue_style( 'bootstrap-theme', get_theme_file_uri( '/assets/css/bootstrap-theme.min.css' ), array(), '3.3.7' );
 	wp_enqueue_style( 'jquery-ui', get_theme_file_uri( '/assets/css/jquery-ui.min.css' ), array(), '1.12.1' );
