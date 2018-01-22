@@ -34,10 +34,11 @@ function validate_create_account()
 	$pwd = $_POST['pwd'];
 	$re_pwd = $_POST['repwd'];
 	$role = $_POST['role'];
+	//$locale = $_POST['locale'];
 
 	if (empty(trim($first_name)) OR empty(trim($last_name)) 
 		OR empty(trim($user_name)) OR empty(trim($email)) 
-		OR empty(trim($pwd)) OR empty(trim($re_pwd)) OR empty($role)) 
+	    OR empty(trim($pwd)) OR empty(trim($re_pwd)) OR empty($role) OR empty($locale)) 
 	{
 		$err = array('status' => false, 'tab' => 1, 'message' => __('The all field is require.'));
 		die(json_encode($err));
@@ -55,7 +56,7 @@ function validate_create_account()
 		die(json_encode($err));
 		exit();
 	}
-	if ($role != 'candidate' && $role != 'recruiter')
+	if (($role != 'candidate' & $role != 'recruiter'))
 	{
 		$err = array('status' => false, 'tab' => 1, 'message' => __('Data incorrect.'));
 		die(json_encode($err));
@@ -129,6 +130,7 @@ function create_account()
 	$website = $_POST['website'];
 	$company_size = $_POST['company_size'];
 	$established_date = $_POST['established_date'];
+	$locale = $_POST['locale'];
 
 	$userdata = array(
 			'user_login' => $user_name,
@@ -176,9 +178,11 @@ function create_account()
 	add_user_meta($user_id, 'first_name', $first_name, false);
 	add_user_meta($user_id, 'last_name', $first_name, false);
 	add_user_meta($user_id, 'role', $role);
+	//add_user_meta($user_id, 'locale', $locale);
 	
 	$u = new WP_User($user_id);
 	$u->set_role($role);
+	
 	
 	$res = array('status' => true, 'tab' => 1, 'message' => 'Create a account success!');
 	die(json_encode($res));

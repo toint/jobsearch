@@ -211,6 +211,7 @@ jQuery(document).ready(function($) {
 		var website = $('#website').val();
 		var comSize = $('#comSize').val();
 		var establishedDate = $('#establishedDate').val();
+		//var locale = $('select[name=locale]').val();
 
 		if (!validate_form()) return false;
 

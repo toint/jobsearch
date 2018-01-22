@@ -160,3 +160,6 @@ require get_theme_file_path( '/inc/job-functions.php' );
 require get_theme_file_path( '/inc/search-job-functions.php' );
 require get_theme_file_path( '/inc/detail-job-functions.php' );
 require get_theme_file_path( '/inc/post-functions.php' );
+require get_theme_file_path( '/inc/user-profiles-functions.php' );
+require get_theme_file_path( '/inc/ajax-functions.php' );
+

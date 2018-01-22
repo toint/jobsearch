@@ -20,7 +20,7 @@ function recruiter_install()
 
 function load_custom_wp_admin_style($hook) {
 	//wp_enqueue_style( 'datatablecss', plugins_url('/assets/css/datatables.css', __FILE__) );
-	//echo $hook;
+	echo $hook;
 	if ($hook == 'toplevel_page_offer_main_menu') {
 	    wp_enqueue_script( 'all-offer-page-js', plugin_dir_url( __FILE__ ) . '/assets/js/all-offer-page.js' , array(), '1.0', true );
 	}
@@ -39,6 +39,7 @@ function load_custom_wp_admin_style($hook) {
 	    wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/map.js' , array(), '1.0', true );
 	    wp_enqueue_script( 'new-post-js', plugin_dir_url( __FILE__ ) . '/assets/js/new-post.js' , array(), '1.0', true );
 	}
+	
 
 	wp_enqueue_script( 'recruiter-js', plugin_dir_url( __FILE__ ) . '/assets/js/recruiters.js' , array(), '1.0', true );
 	wp_localize_script( 'ajax-script', 'admin_url', array( 'url' => admin_url( 'admin.php' ), 'nonce' => wp_create_nonce('ajaxnonce') )); // setting ajaxurl

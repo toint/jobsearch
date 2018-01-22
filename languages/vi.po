@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-14 22:42+0700\n"
+"PO-Revision-Date: 2018-01-22 09:54+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.5\n"
 "Language: vi_VN\n"
 "Project-Id-Version: WordPress - 4.9.x - Development\n"
 "POT-Creation-Date: \n"
@@ -2285,7 +2285,7 @@ msgstr "REST base route cho taxonomy."
 #: wp-includes/l10n.php:1203
 msgctxt "default site language"
 msgid "Site Default"
-msgstr "Trang web mặc định"
+msgstr "Ngôn ngữ mặc định"
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:426
 msgid "HTML description for the object, transformed for display."
@@ -12211,3 +12211,18 @@ msgstr "TIN NHANH"
 
 msgid "From"
 msgstr "Từ"
+
+msgid "POSTED DATE"
+msgstr "NGÀY ĐĂNG"
+
+msgid "JOB LEVEL"
+msgstr "TRÌNH ĐỘ"
+
+msgid "JOB CATEGORY"
+msgstr "CHUYÊN MỤC"
+
+msgid "SKILL"
+msgstr "KỸ NĂNG"
+
+msgid "PREFERRED LANGUAGE"
+msgstr "NGÔN NGỮ"
