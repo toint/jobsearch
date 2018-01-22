@@ -301,7 +301,17 @@ input, button {
 }
 
 .the-post-time .the-post-line {
-	
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+	margin: 15px;
+}
+
+.the-post-time .the-post-line:last-child {
+	border: none;
+}
+
+.the-post-time .the-post-line .fa {
+	font-size: 18px;
 }
 
 /*--FOOTER--*/
