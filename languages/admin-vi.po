@@ -11159,3 +11159,6 @@ msgstr "Cập nhật thành công."
 
 msgid "Update Failed."
 msgstr "Cập nhật lỗi."
+
+msgid "Curriculum Vitae"
+msgstr "Sơ yếu lý lịch"

@@ -269,37 +269,19 @@ if ($update_flag) {
                                 <div class="form-group">
                                     <label for="jobType" class="col-sm-2 control-label"><?php echo __('Job Type');?></label>
                                     <div class="col-sm-10">
-                                        <input value="<?php echo $txt_job_type;?>" type="text" class="form-control" name="jobType" id="jobType" placeholder="<?php echo __('Enter Job Type'); ?>" />
+                                        <input value="<?php echo $txt_job_type;?>" type="text" class="form-control" name="jobType" id="jobType" placeholder="<?php echo __('Search ...'); ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="occupation" class="col-sm-2 control-label"><?php echo __('Occupation'); ?></label>
                                     <div class="col-sm-10">
-                                    	<select class="form-control" id="occupation" name="occupation">
-                                    		<?php 
-                                    		foreach ($occupations as $item) {
-                                    		    $selected = '';
-                                    		    if ($item->name == $txt_occupation) $selected = 'selected';
-                                    		?>
-                                    		<option <?php echo $selected;?> value="<?php echo $item->name;?>"><?php echo $item->name;?></option>
-                                    		<?php }?>
-                                    	</select>
+                                    	<input type="text" value="<?php echo $txt_occupation;?>" class="form-control" name="occupation" id="searchOccupation" placeholder="<?php echo __('Search ...');?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="level" class="col-sm-2 control-label"><?php echo __('Level'); ?></label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="level" name="level">
-                                            <?php 
-                                                foreach($levels as $item) {
-                                                    $selected = '';
-                                                    if ($item->name == $txt_level) {
-                                                        $selected = 'selected';
-                                                    }
-                                                    echo '<option '. $selected .' value="' . $item->name .'">'. __($item->name) . '</option>';
-                                                }
-                                            ?>
-                                        </select>
+                                        <input type="text" class="form-control" name="level" id="searchLevel" value="<?php echo $txt_level?>" placeholder="<?php echo __('Search ...');?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">

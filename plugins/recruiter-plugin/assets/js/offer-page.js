@@ -98,6 +98,56 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
+	$('#searchOccupation').autocomplete({
+		source: function(request, response) {
+			$.ajax({
+				url: ajax_var.url,
+				method: 'POST',
+				dataType: 'json',
+				data: {
+					action: 'autocomplete_occupation',
+					nonce: ajax_var.nonce,
+					name: request.term
+				},
+				success: function(data) {
+					response(data);
+				},
+				error: function(err) {
+					
+				}
+			});
+		},
+		minLength: 1,
+		select: function(event, ui) {
+			return true;
+		}
+	});
+	
+	$('#searchLevel').autocomplete({
+		source: function(request, response) {
+			$.ajax({
+				url: ajax_var.url,
+				method: 'POST',
+				dataType: 'json',
+				data: {
+					action: 'autocomplete_level',
+					nonce: ajax_var.nonce,
+					name: request.term
+				},
+				success: function(data) {
+					response(data);
+				},
+				error: function(err) {
+					
+				}
+			});
+		},
+		minLength: 1,
+		select: function(event, ui) {
+			return true;
+		}
+	});
+	
 	$('#jobActivity').autocomplete({
 		source: function(request, response) {
 			$.ajax({

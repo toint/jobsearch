@@ -4,6 +4,12 @@ add_action( 'show_user_profile', 'add_civil_profiles' );
 add_action( 'edit_user_profile', 'add_civil_profiles' );
 
 function add_civil_profiles() {
+    $user = wp_get_current_user();
+    
+    $driving_license = get_user_meta($user->ID, 'DRIVING_LICENSE');
+    $occupations = get_user_meta($user->ID, 'OCCUPATION');
+    $levels = get_user_meta($user->ID, 'LEVEL');
+    
 ?>
 <h2><?php echo __('Civil Status');?></h2>
 <table class="form-table">
@@ -17,7 +23,17 @@ function add_civil_profiles() {
 	<tr>
 		<th></th>
 		<td>
-			<ul id="list-driving-license"></ul>
+			<div id="list-driving-license">
+				<?php 
+				if (!empty($driving_license)) { 
+				    $licenses = json_decode($driving_license[0]);
+				    for ($i = 0; $i < count($licenses); $i++) {
+				    ?>
+				<span class="badge" id="list-driving-license-item-<?php echo $i;?>"><?php echo $licenses[$i];?>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag('list-driving-license-item-<?php echo $i;?>')">&nbsp;&nbsp;<i class="fa fa-remove"></i></a></span><input type="hidden" name="driving_license[]" value="<?php echo $licenses[$i];?>">
+				<?php 
+				} }
+				?>
+			</div>
 		</td>
 	</tr>
 </table>
@@ -34,7 +50,17 @@ function add_civil_profiles() {
 	<tr>
 		<th></th>
 		<td>
-			<ul id="list-user-occupation"></ul>
+			<div id="list-user-occupation">
+			<?php 
+				if (!empty($occupations)) { 
+				    $occps = json_decode($occupations[0]);
+				    for ($i = 0; $i < count($occps); $i++) {
+				    ?>
+				<span class="badge" id="list-occupation-item-<?php echo $i;?>"><?php echo $occps[$i];?>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag('list-occupation-item-<?php echo $i;?>')">&nbsp;&nbsp;<i class="fa fa-remove"></i></a></span><input type="hidden" name="occupations[]" value="<?php echo $occps[$i];?>">
+				<?php 
+				} }
+				?>
+			</div>
 		</td>
 	</tr>
 	
@@ -48,7 +74,17 @@ function add_civil_profiles() {
 	<tr>
 		<th></th>
 		<td>
-			<ul id="list-user-level"></ul>
+			<div id="list-user-level">
+			<?php 
+				if (!empty($levels)) { 
+				    $levelj = json_decode($levels[0]);
+				    for ($i = 0; $i < count($levelj); $i++) {
+				    ?>
+				<span class="badge" id="list-level-item-<?php echo $i;?>"><?php echo $levelj[$i];?>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag('list-level-item-<?php echo $i;?>')">&nbsp;&nbsp;<i class="fa fa-remove"></i></a></span><input type="hidden" name="levels[]" value="<?php echo $levelj[$i];?>">
+				<?php 
+				} }
+				?>
+			</div>
 		</td>
 	</tr>
 </table>
@@ -62,10 +98,36 @@ function save_user_profiles( $user_id ) {
     
     if ( !current_user_can( 'edit_user', $user_id ) )
         return false;
+     
+    $drivings = array();
+    $occupations = array();
+    $levels = array();
+    
+    delete_user_meta($user_id, 'DRIVING_LICENSE');
+    delete_user_meta($user_id, 'OCCUPATION');
+    delete_user_meta($user_id, 'LEVEL');
+    
+    if (isset($_POST['driving_license'])) {
+        $drivings = $_POST['driving_license'];
+        if (!empty($drivings)) {
+            update_usermeta( $user_id, 'DRIVING_LICENSE', json_encode($drivings) );
+        }
         
-        update_usermeta( $user_id, 'pic', $_POST['pic'] );
-        update_usermeta( $user_id, 'Facebook', $_POST['Facebook'] );
-        update_usermeta( $user_id, 'Twitter', $_POST['Twitter'] );
+    }
+    
+    if (isset($_POST['occupations'])) {
+        $occupations = $_POST['occupations'];
+        if (!empty($occupations)) {
+            update_usermeta( $user_id, 'OCCUPATION', json_encode($occupations) );
+        }
+    }
+    
+    if (isset($_POST['levels'])) {
+        $levels = $_POST['levels'];
+        if (!empty($levels)) {
+            update_usermeta( $user_id, 'LEVEL', json_encode($levels) );
+        }
+    }
 }
 
 function user_profiles_js() {
@@ -79,11 +141,11 @@ function user_profiles_js() {
 				$.ajax({
 					url: ajax_var.url,
 					dataType: 'json',
-					method: 'GET',
+					method: 'POST',
 					data: {
 						name: request.term,
 						nonce: ajax_var.nonce,
-						action: 'action_search_driving_license'
+						action: 'autocomplete_driving_licesine'
 					},
 					success: function(data) {
 						response(data);
@@ -102,12 +164,12 @@ function user_profiles_js() {
 
 			if ('' !== $.trim(txt)) {
 
-				var html = '<li class="list-group-item" id="list-driving-license-item-'+ id +'">';
-				html += '<span class="badge"><a href="javascript:void(0);" onclick="remove_list_group(\'list-driving-license-item-'+ id + '\')">';
-				html += lang.label_delete;
-				html += '</a></span>';
+				var html = '<span class="badge" id="list-driving-license-item-'+ id + '">';
 				html += txt;
-				html += '<input type="hidden" name="driving_license[]" value="'+ txt +'" /></li>';
+				html += '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag(\'list-driving-license-item-'+ id + '\')">';
+				html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
+				html += '</a></span>';
+				html += '<input type="hidden" name="driving_license[]" value="'+ txt +'" />';
 				
 				$('#list-driving-license').append(html);
 				$('#driving_license').val('');
@@ -119,11 +181,11 @@ function user_profiles_js() {
 				$.ajax({
 					url: ajax_var.url,
 					dataType: 'json',
-					method: 'GET',
+					method: 'POST',
 					data: {
 						name: request.term,
 						nonce: ajax_var.nonce,
-						action: 'action_search_occupation'
+						action: 'autocomplete_occupation'
 					},
 					success: function(data) {
 						response(data);
@@ -142,12 +204,12 @@ function user_profiles_js() {
 
 			if ('' !== $.trim(txt)) {
 
-				var html = '<li class="list-group-item" id="list-occupation-item-'+ id +'">';
-				html += '<span class="badge"><a href="javascript:void(0);" onclick="remove_list_group(\'list-occupation-item-'+ id + '\')">';
-				html += lang.label_delete;
-				html += '</a></span>';
+				var html = '<span class="badge" id="list-occupation-item-'+ id + '">';
 				html += txt;
-				html += '<input type="hidden" name="occupations[]" value="'+ txt +'" /></li>';
+				html += '<a href="javascript:void(0);" onclick="removeTag(\'list-occupation-item-'+ id + '\')">';
+				html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
+				html += '</a></span>';
+				html += '<input type="hidden" name="occupations[]" value="'+ txt +'" />';
 				
 				$('#list-user-occupation').append(html);
 				$('#occupation').val('');
@@ -159,11 +221,11 @@ function user_profiles_js() {
 				$.ajax({
 					url: ajax_var.url,
 					dataType: 'json',
-					method: 'GET',
+					method: 'POST',
 					data: {
 						name: request.term,
 						nonce: ajax_var.nonce,
-						action: 'action_search_level'
+						action: 'autocomplete_level'
 					},
 					success: function(data) {
 						response(data);
@@ -182,12 +244,12 @@ function user_profiles_js() {
 
 			if ('' !== $.trim(txt)) {
 
-				var html = '<li class="list-group-item" id="list-occupation-item-'+ id +'">';
-				html += '<span class="badge"><a href="javascript:void(0);" onclick="remove_list_group(\'list-level-item-'+ id + '\')">';
-				html += lang.label_delete;
-				html += '</a></span>';
+				var html = '<span class="badge" id="list-level-item-'+ id + '">';
 				html += txt;
-				html += '<input type="hidden" name="levels[]" value="'+ txt +'" /></li>';
+				html += '<a href="javascript:void(0);" onclick="removeTag(\'list-level-item-'+ id + '\')">';
+				html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
+				html += '</a></span>';
+				html += '<input type="hidden" name="levels[]" value="'+ txt +'" />';
 				
 				$('#list-user-level').append(html);
 				$('#level').val('');
@@ -195,6 +257,10 @@ function user_profiles_js() {
 		});
 		
 	} );
+
+	function removeTag(childId) {
+		jQuery('#' + childId).remove();
+	}
 </script>
 <?php 
 }

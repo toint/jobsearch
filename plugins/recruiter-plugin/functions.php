@@ -64,6 +64,48 @@ function autocomplete_job_type() {
 }
 add_action('wp_ajax_autocomplete_job_type', 'autocomplete_job_type');
 
+function autocomplete_occupation() {
+    $data = array();
+    if (isset($_POST['name'])) {
+        $result = get_offer_meta($_POST['name'], 'OCCUPATION');
+        if (!empty($result)) {
+            foreach ($result as $item) {
+                array_push($data, array('id' => $item->name, 'value' => $item->name));
+            }
+        }
+    }
+    die(json_encode($data));
+}
+add_action('wp_ajax_autocomplete_occupation', 'autocomplete_occupation');
+
+function autocomplete_driving_licesine() {
+    $data = array();
+    if (isset($_POST['name'])) {
+        $result = get_offer_meta($_POST['name'], 'DRIVING_LICENSE');
+        if (!empty($result)) {
+            foreach ($result as $item) {
+                array_push($data, array('id' => $item->name, 'value' => $item->name));
+            }
+        }
+    }
+    die(json_encode($data));
+}
+add_action('wp_ajax_autocomplete_driving_licesine', 'autocomplete_driving_licesine');
+
+function autocomplete_level() {
+    $data = array();
+    if (isset($_POST['name'])) {
+        $result = get_offer_meta($_POST['name'], 'LEVEL');
+        if (!empty($result)) {
+            foreach ($result as $item) {
+                array_push($data, array('id' => $item->name, 'value' => $item->name));
+            }
+        }
+    }
+    die(json_encode($data));
+}
+add_action('wp_ajax_autocomplete_level', 'autocomplete_level');
+
 function autocomplete_job_activity() {
     $data = array();
     if (isset($_POST['name'])) {

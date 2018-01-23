@@ -17,6 +17,13 @@ class Offer {
         $this->delete_offer_meta($wpdb, $offer_id);
         
         $offer = $data['offer'];
+        
+        $occupation = $offer['occupation'];
+        $this->insert_offer_meta($wpdb, 'OCCUPATION', $occupation);
+        
+        $level = $offer['level'];
+        $this->insert_offer_meta($wpdb, 'LEVEL', $occupation);
+        
         $job_type = $offer['job_type'];
         $this->insert_offer_meta($wpdb, 'JOB_TYPE', $job_type);
         
@@ -44,6 +51,12 @@ class Offer {
             die();
             return '';
         }
+        
+        $occupation = $offer_data['occupation'];
+        $this->insert_offer_meta($wpdb, 'OCCUPATION', $occupation);
+        
+        $level = $offer_data['level'];
+        $this->insert_offer_meta($wpdb, 'LEVEL', $occupation);
         
         $job_type = $offer_data['job_type'];
         $this->insert_offer_meta($wpdb, 'JOB_TYPE', $job_type);

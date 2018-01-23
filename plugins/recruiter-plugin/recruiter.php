@@ -20,11 +20,11 @@ function recruiter_install()
 
 function load_custom_wp_admin_style($hook) {
 	//wp_enqueue_style( 'datatablecss', plugins_url('/assets/css/datatables.css', __FILE__) );
-	echo $hook;
+	//echo $hook;
 	if ($hook == 'toplevel_page_offer_main_menu') {
 	    wp_enqueue_script( 'all-offer-page-js', plugin_dir_url( __FILE__ ) . '/assets/js/all-offer-page.js' , array(), '1.0', true );
 	}
-	if ($hook == 'all-offers_page_offer_page') {
+	if ($hook == 'all-offers_page_offer_page' || $hook == 'tat-ca-cong-viec_page_offer_page') {
 		wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/map.js' , array(), '1.0', true );
 		wp_enqueue_script( 'offer-page-js', plugin_dir_url( __FILE__ ) . '/assets/js/offer-page.js' , array(), '1.0', true );
 	}
@@ -35,7 +35,7 @@ function load_custom_wp_admin_style($hook) {
 	    wp_enqueue_script( 'post-js', plugin_dir_url( __FILE__ ) . '/assets/js/post.js' , array(), '1.0', true );
 	    wp_localize_script( 'ajax-script', 'post_var', array( 'url' => 'recruiter_post_page' ));
 	}
-	if ($hook == 'all-post_page_recruiter_post_page') {
+	if ($hook == 'all-post_page_recruiter_post_page' || $hook == 'tin-nhanh_page_recruiter_post_page') {
 	    wp_enqueue_script( 'map-js', plugin_dir_url( __FILE__ ) . '/assets/js/map.js' , array(), '1.0', true );
 	    wp_enqueue_script( 'new-post-js', plugin_dir_url( __FILE__ ) . '/assets/js/new-post.js' , array(), '1.0', true );
 	}
