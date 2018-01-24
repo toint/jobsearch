@@ -181,6 +181,10 @@ jQuery(function($) {
 		}
 	});
 	
+	$('#btnChooseFile').on('click', function() {
+		$(this).next().trigger('click');
+	});
+	
 } );
 
 function removeTag(childId) {

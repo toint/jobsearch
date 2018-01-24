@@ -1115,3 +1115,4 @@
 [23-Jan-2018 09:07:22 UTC] PHP Notice:  Undefined variable: driving_license in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\civil-page.php on line 15
 [23-Jan-2018 09:07:22 UTC] PHP Notice:  Undefined variable: driving_license in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\civil-page.php on line 22
 [23-Jan-2018 09:07:22 UTC] PHP Notice:  Undefined variable: driving_license in C:\xampp\htdocs\jobs\wp-content\plugins\recruiter-plugin\civil-page.php on line 29
+[24-Jan-2018 01:42:12 UTC] PHP Warning:  Đã sẩy ra một lỗi bất ngờ. Có vấn đề với WordPress.org hoặc cấu hình máy chủ này. Nếu bạn tiếp tục gặp lỗi, hãy vào <a href="http://wordpress.org/support/">diễn đàn hỗ trợ</a>. (WordPress không thể thiết lập kết nối an toàn tới WordPress.org. Vui lòng liên hệ quản trị máy chủ của bạn.) in C:\xampp\htdocs\jobs\wp-includes\update.php on line 526
