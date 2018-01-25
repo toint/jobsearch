@@ -11162,3 +11162,12 @@ msgstr "Cập nhật lỗi."
 
 msgid "Curriculum Vitae"
 msgstr "Sơ yếu lý lịch"
+
+msgid "From Month"
+msgstr "Từ Tháng"
+
+msgid "To Month"
+msgstr "Đến Tháng"
+
+msgid "Current Job"
+msgstr "Hiện tại"

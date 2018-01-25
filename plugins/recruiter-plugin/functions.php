@@ -1,4 +1,8 @@
 <?php
+if ( ! function_exists( 'wp_handle_upload' ) ) {
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+}
+
 
 function create_message($msg) {
     return '<div class="alert alert-danger" role="alert">' . $msg . '</div>';
@@ -182,3 +186,19 @@ function action_load_all_post() {
     die(json_encode($data));
 }
 add_action('wp_ajax_action_load_all_post', 'action_load_all_post');
+
+
+function upload_avatar() {
+    $file = $_FILES['pic'];
+    $upload_overrides = array( 'test_form' => false );
+    
+    $movefile = wp_handle_upload( $file, $upload_overrides );
+    
+    if ( $movefile && ! isset( $movefile['error'] ) ) {
+        echo $movefile['url'];
+    } else {
+        echo 0;
+    }
+    die();
+}
+add_action('wp_ajax_upload_avatar', 'upload_avatar');

@@ -35,7 +35,7 @@ jQuery(function($) {
 				html += '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag(\'list-driving-license-item-'+ id + '\')">';
 				html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
 				html += '</a></span>';
-				html += '<input type="hidden" name="driving_license[]" value="'+ txt +'" />';
+				html += '<input type="hidden" name="driving_licenses[]" value="'+ txt +'" />';
 				
 				$('#list-driving-license').append(html);
 				$('#driving_license').val('');
@@ -54,7 +54,7 @@ jQuery(function($) {
 			html += '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag(\'list-driving-license-item-'+ id + '\')">';
 			html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
 			html += '</a></span>';
-			html += '<input type="hidden" name="driving_license[]" value="'+ txt +'" />';
+			html += '<input type="hidden" name="driving_licenses[]" value="'+ txt +'" />';
 			
 			$('#list-driving-license').append(html);
 			$('#driving_license').val('');
@@ -182,7 +182,43 @@ jQuery(function($) {
 	});
 	
 	$('#btnChooseFile').on('click', function() {
-		$(this).next().trigger('click');
+		$('#avatar').trigger('click');
+	});
+	
+	$('#btnSaveCivil').on('click', function() {
+		$('#frmCivil').submit();
+	});
+	
+	$('#avatar').on('change', function() {
+		var url = $('#avatar').val();
+		var formData = new FormData();
+		var file = $('#avatar')[0].files[0];
+		formData.append('pic', file);
+		formData.append('action', 'upload_avatar');
+		
+		$.ajax({
+			url			: ajax_var.url,
+			method		: 'POST',
+			dataType	: 'text',
+			data		: formData,
+			cache       : false,
+	        contentType : false,
+	        processData : false,
+			success		: function(data) {
+				$('#img-avatar').attr('src', data);
+				$('#avatar_url').val(data);
+			},
+			error		: function(err) {
+				
+			}
+		});
+	});
+	
+	$('#workFromMonth').datepicker();
+	$('#workToMonth').datepicker();
+	
+	$('#btnSaveWorkHistory').on('click', function() {
+		$('#frmExperience').submit();
 	});
 	
 } );
