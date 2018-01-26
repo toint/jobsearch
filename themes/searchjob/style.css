@@ -29,7 +29,7 @@ html, body {
 	color: #FAB767;
 }
 
-input, button {
+input, button, textarea {
 	border-radius: 0px !important;
 	box-shadow: none !important;
 /* 	background: #fff !important; */
@@ -327,3 +327,36 @@ input, button {
 .footer-info {
 	height: 20%;
 }
+
+.page-container .panel {
+	box-shadow: none;
+	border-radius: 0px;
+}
+
+.page-container .panel-default {
+	background: #fff;
+}
+
+.page-container .panel-default>.panel-heading {
+	background: #fff;
+}
+
+.page-container button {
+	background: none;
+}
+
+.page-container .badge {
+	padding: 10px 12px;
+	font-size: 14px;
+	font-weight: normal;
+	background: #000;
+}
+
+.list-badge {
+	padding: 5px 0px;
+}
+
+.list-badge > .badge {
+	margin-right: 5px;
+}
+

@@ -34,9 +34,9 @@ jQuery(function($) {
 				html += txt;
 				html += '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag(\'list-driving-license-item-'+ id + '\')">';
 				html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
-				html += '</a></span>';
+				html += '</a>';
 				html += '<input type="hidden" name="driving_licenses[]" value="'+ txt +'" />';
-				
+				html += '</span>';
 				$('#list-driving-license').append(html);
 				$('#driving_license').val('');
 			}
@@ -53,9 +53,9 @@ jQuery(function($) {
 			html += txt;
 			html += '&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag(\'list-driving-license-item-'+ id + '\')">';
 			html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
-			html += '</a></span>';
+			html += '</a>';
 			html += '<input type="hidden" name="driving_licenses[]" value="'+ txt +'" />';
-			
+			html += '</span>';
 			$('#list-driving-license').append(html);
 			$('#driving_license').val('');
 		}
@@ -94,9 +94,9 @@ jQuery(function($) {
 				html += txt;
 				html += '<a href="javascript:void(0);" onclick="removeTag(\'list-occupation-item-'+ id + '\')">';
 				html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
-				html += '</a></span>';
+				html += '</a>';
 				html += '<input type="hidden" name="occupations[]" value="'+ txt +'" />';
-				
+				html += '</span>';
 				$('#list-user-occupation').append(html);
 				$('#occupation').val('');
 			}
@@ -113,9 +113,9 @@ jQuery(function($) {
 			html += txt;
 			html += '<a href="javascript:void(0);" onclick="removeTag(\'list-occupation-item-'+ id + '\')">';
 			html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
-			html += '</a></span>';
+			html += '</a>';
 			html += '<input type="hidden" name="occupations[]" value="'+ txt +'" />';
-			
+			html += '</span>';
 			$('#list-user-occupation').append(html);
 			$('#occupation').val('');
 		}
@@ -154,9 +154,9 @@ jQuery(function($) {
 				html += txt;
 				html += '<a href="javascript:void(0);" onclick="removeTag(\'list-level-item-'+ id + '\')">';
 				html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
-				html += '</a></span>';
+				html += '</a>';
 				html += '<input type="hidden" name="levels[]" value="'+ txt +'" />';
-				
+				html += '</span>';
 				$('#list-user-level').append(html);
 				$('#level').val('');
 			}
@@ -173,9 +173,9 @@ jQuery(function($) {
 			html += txt;
 			html += '<a href="javascript:void(0);" onclick="removeTag(\'list-level-item-'+ id + '\')">';
 			html += '&nbsp;&nbsp;<i class="fa fa-remove"></i>';
-			html += '</a></span>';
+			html += '</a>';
 			html += '<input type="hidden" name="levels[]" value="'+ txt +'" />';
-			
+			html += '</span>';
 			$('#list-user-level').append(html);
 			$('#level').val('');
 		}
