@@ -3,15 +3,24 @@ function civil_page() {
     $user = wp_get_current_user();
     $user_id = $user->ID;
     
+    $user_profile = new User_Profile();
+    
     $driving_licenses = '';
     $occupations = '';
     $levels = '';
     $avatar_url = '';
+    $title = '';
+    $experience = '';
     
     if (!is_user_logged_in()) {
         return;
     }
-    
+    if (isset($_POST['title'])) {
+    	$title = $_POST['title'];
+    }
+    if (isset($_POST['experience'])) {
+    	$experience = $_POST['experience'];
+    }
     if (isset($_POST['driving_licenses'])) {
         $driving_licenses = $_POST['driving_licenses'];
     }
@@ -24,30 +33,51 @@ function civil_page() {
     if (isset($_POST['avatar_url'])) {
         $avatar_url = $_POST['avatar_url'];
     }
-    if (isset($_POST['driving_licenses']) && isset($_POST['occupations']) && isset($_POST['levels']) && isset($_POST['avatar_url'])) {
+    if (isset($_POST['title']) && isset($_POST['experience'])
+    		OR (isset($_POST['driving_licenses']) OR isset($_POST['occupations']) 
+    		OR isset($_POST['levels']) OR isset($_POST['avatar_url']))) {
+        $profile = array(
+        		'title' => $title,
+        		'work_experience' => $experience,
+        		'user_id'=> $user_id,
+        		'avatar_url' => $avatar_url
+        );
+        $profile_meta = array();
+        for ($i = 0; $i < count($driving_licenses); $i++) {
+        	array_push($profile_meta, array(
+        			'meta_key' => 'DRIVING_LICENSE',
+        			'meta_value' => $driving_licenses[i],
+        			'profile_id' => 0
+        	));
+        }
+        for ($i = 0; $i < count($occupations); $i++) {
+        	array_push($profile_meta, array(
+        			'meta_key' => 'OCCUPATION',
+        			'meta_value' => $occupations[i],
+        			'profile_id' => 0
+        	));
+        }
+        for ($i = 0; $i < count($levels); $i++) {
+        	array_push($profile_meta, array(
+        			'meta_key' => 'LEVEL',
+        			'meta_value' => $levels[i],
+        			'profile_id' => 0
+        	));
+        }
         
-        delete_user_meta($user_id, 'DRIVING_LICENSE');
-        delete_user_meta($user_id, 'OCCUPATION');
-        delete_user_meta($user_id, 'LEVEL');
+        $save_profile_data = array(
+        		'profile' => $profile,
+        		'profile_meta' => $profile_meta
+        );
         
-        if (!empty($driving_licenses)) {
-            update_user_meta( $user->ID, 'DRIVING_LICENSE', json_encode($driving_licenses) );
-        }
-        if (!empty($occupations)) {
-            update_user_meta( $user->ID, 'OCCUPATION', json_encode($occupations) );
-        }
-        if (!empty($levels)) {
-            update_user_meta( $user->ID, 'LEVEL', json_encode($levels) );
-        }
-        if (!empty($avatar_url)) {
-            update_user_meta( $user->ID, 'avatar_url', $avatar_url );
-        }
+        
+        $user_profile->insert($save_profile_data);
+        
     }
     
-    $driving_licenses = get_user_meta($user_id, 'DRIVING_LICENSE');
-    $occupations = get_user_meta($user_id, 'OCCUPATION');
-    $levels = get_user_meta($user_id, 'LEVEL');
-    $avatar_url = get_user_meta($user_id, 'avatar_url');
+    
+    $profile_data = $user_profile->get_profile();
+    $profile_metas = $user_profile->get_profile_meta();
     
     
     
@@ -63,6 +93,22 @@ function civil_page() {
 				<div class="row">
 					<div class="col-md-9">
 						<div class="form-group">
+							<label for="title"><?php echo __('Title');?></label>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" id="title" name="title" maxlength="255" class="form-control" value=<?php echo $title;?> />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="title"><?php echo __('Experience');?></label>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="number" id="experience" name="experience" class="form-control" value=<?php echo $experience;?> />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
         					<label for="driving_license"><?php echo __('Driving License');?></label>
     						<div class="row">
         						<div class="col-md-9">
@@ -74,14 +120,14 @@ function civil_page() {
     						</div>
         					<p id="list-driving-license" class="list-badge">
         					<?php 
-        					if (!empty($driving_licenses)) {
-        					    $arr_driving = json_decode($driving_licenses[0]);
-        					    for($i = 0; $i < count($arr_driving); $i++) {
+        					if (!empty($profile_metas)) {
+        					    foreach($profile_metas as $meta) {
+        					    	if ($meta->meta_key != 'DRIVING_LICENSE') continue;
         					?>
-        					<span class="badge" id="list-driving-license-item-<?php echo $i;?>">
-        						<?php echo $arr_driving[$i];?>
+        					<span class="badge" id="list-driving-license-item-<?php echo $meta->id;?>">
+        						<?php echo $meta->meta_value;?>
         						&nbsp;&nbsp;<a href="javascript:void(0);" onclick="removeTag('list-driving-license-item-<?php echo $i;?>')">&nbsp;&nbsp;<i class="fa fa-remove"></i></a>
-        						<input type="hidden" name="driving_licenses[]" value="<?php echo $arr_driving[$i];?>" />
+        						<input type="hidden" name="driving_licenses[]" value="<?php echo $meta->meta_value;?>" />
         					</span>
         					
         					<?php 
@@ -101,7 +147,7 @@ function civil_page() {
     						</div>
     						<p id="list-user-occupation" class="list-badge">
     						<?php 
-        					if (!empty($occupations)) {
+        					if (!empty($profile_metas)) {
         					    $arr_occupation = json_decode($occupations[0]);
         					    for($i = 0; $i < count($arr_occupation); $i++) {
         					?>
@@ -128,7 +174,7 @@ function civil_page() {
         					</div>
     						<p id="list-user-level" class="list-badge">
     						<?php 
-        					if (!empty($levels)) {
+        					if (!empty($profile_metas)) {
         					    $arr_level = json_decode($levels[0]);
         					    for($i = 0; $i < count($arr_level); $i++) {
         					?>
